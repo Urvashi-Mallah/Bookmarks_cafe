@@ -1,4 +1,4 @@
-# The Bookmark Cafe Website (Kalyan West)
+# 📖 The Bookmark Cafe Website (Kalyan West)
 
 An aesthetic, responsive, customer-facing web application designed for **The Bookmark Cafe**, Kalyan West's premier literary haven where good books meet artisan brew and gourmet dining.
 
@@ -7,13 +7,13 @@ An aesthetic, responsive, customer-facing web application designed for **The Boo
 ## 🌟 Key Features
 
 1. **Brand Storytelling & Literary Aesthetic**
-   - Theme inspired by warm espresso, aged book pages, and the cafe's iconic secret book-cover entrance door.
-   - Elegant typography with *Cinzel*, *Playfair Display*, and *Plus Jakarta Sans*.
+   - Theme inspired by rich espresso brown, aged book pages, and the cafe's iconic secret book-cover entrance door.
+   - Elegant typography pairing *Cinzel*, *Playfair Display*, and *Plus Jakarta Sans*.
 
 2. **Authentic Kalyan Menu with Indian Rupee (₹) Pricing**
    - Categories:
      - ☕ Artisan Coffee & Signature Belgian Hot Chocolates
-     - 🥤 Thick Shakes (Biscoff, Brownie Fudge), Frappes & Mocktails
+     - 🥤 Thick Shakes (Lotus Biscoff, Brownie Fudge), Frappes & Mocktails
      - 🍟 Fries Bar & Starters (Peri-Peri Fries, Grand Fries Platter, Cheesy Nachos)
      - 🍕 Handcrafted Pastas & Artisan Pizzas (Burrata & Pesto, Quattro Stagioni, Pink Sauce)
      - 🍔 Burgers, Club Sandwiches & Grilled Sourdough
@@ -30,11 +30,11 @@ An aesthetic, responsive, customer-facing web application designed for **The Boo
 4. **Table & Reading Nook Reservation System**
    - Book tables for solo study, romantic dates, or group book clubs.
    - Seating preferences: Cozy Reading Nook, Bookshelf Table, Window Work Bench.
-   - Generates an instant booking reference (e.g. `BK-7492`) and provides 1-click WhatsApp notification to **+91 8421190965**.
+   - Generates an instant booking reference (e.g. `BK-7492`) with a 1-click WhatsApp notification to **+91 8421190965**.
 
 5. **Community Book Exchange & Board Games**
    - Details on the *"Take a Book, Leave a Book"* initiative.
-   - Monthly Book & Brew pairing showcase (*The Midnight Library* + *Hazelnut Hot Chocolate*).
+   - Curated Book & Brew of the Month (*The Midnight Library* + *Hazelnut Hot Chocolate*).
 
 6. **Location, Map & Quick Contact**
    - Address: Shop No. 4, Patil Bungalow, Gandhar Nagar Road, Adharwadi Jail Road, Kalyan West, Maharashtra 421301.
@@ -44,20 +44,34 @@ An aesthetic, responsive, customer-facing web application designed for **The Boo
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 Deployment on Render
 
-You can launch and view the website immediately using Python:
+This website is hosted as a Static Site on **Render**.
+
+### Render Configuration
+* **Environment**: Static Site
+* **Build Command**: *(leave empty)*
+* **Publish Directory**: `./` (or `.`)
+* **Configuration File**: `render.yaml` (auto-detects routing and headers)
+
+Every commit pushed to the `main` branch on GitHub triggers an automatic deployment on Render.
+
+---
+
+## 💻 How to Run Locally
+
+You can preview the website locally using Python:
 
 ```bash
 python server.py
 ```
 
-Or open directly in your web browser:
+Then visit in your web browser:
 ```
 http://localhost:8080
 ```
 
-You can also simply double-click or open `index.html` directly in any web browser (Chrome, Edge, Firefox, Safari).
+You can also simply open `index.html` directly in any modern web browser.
 
 ---
 
@@ -66,10 +80,11 @@ You can also simply double-click or open `index.html` directly in any web browse
 ```
 d:\bookmark_cafe\
 ├── index.html          # Semantic responsive HTML5 structure
+├── render.yaml         # Render hosting blueprint configuration
 ├── server.py           # Local development Python server
-├── README.md           # Documentation
+├── README.md           # Project documentation
 ├── css/
-│   └── styles.css      # Custom styling, bookmark ribbons, coffee steam animations
+│   └── styles.css      # Custom styling, bookmark ribbons, animations
 └── js/
     ├── data.js         # Menu items, prices, cafe metadata, testimonials, FAQs
     ├── cart.js         # Taste Tray state & WhatsApp message generator
@@ -79,5 +94,4 @@ d:\bookmark_cafe\
 
 ---
 
-> [!NOTE]
-> Per client instructions, this repository remains strictly local and has not been pushed to GitHub, Vercel, or Render.
+© 2026 The Bookmark Cafe. Designed with ❤️ for Indian bibliophiles & coffee enthusiasts.
