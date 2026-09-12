@@ -1,5 +1,13 @@
 # 📖 The Bookmark Cafe Website (Kalyan West)
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-bookmarks--cafe.onrender.com-brightgreen?style=for-the-badge&logo=render)](https://bookmarks-cafe.onrender.com)
+[![GitHub stars](https://img.shields.io/badge/Status-Live%20Online-success?style=for-the-badge)](https://bookmarks-cafe.onrender.com)
+
+> ### 🌐 **Live Website Link:**  
+> 👉 **[https://bookmarks-cafe.onrender.com](https://bookmarks-cafe.onrender.com)**
+
+---
+
 An aesthetic, responsive, customer-facing web application designed for **The Bookmark Cafe**, Kalyan West's premier literary haven where good books meet artisan brew and gourmet dining.
 
 ---
@@ -44,23 +52,20 @@ An aesthetic, responsive, customer-facing web application designed for **The Boo
 
 ---
 
-## 🚀 Deployment on Render
+## 🚀 Live Deployment on Render
 
-This website is hosted as a Static Site on **Render**.
-
-### Render Configuration
+* **Live URL**: **[https://bookmarks-cafe.onrender.com](https://bookmarks-cafe.onrender.com)**
 * **Environment**: Static Site
-* **Build Command**: *(leave empty)*
-* **Publish Directory**: `./` (or `.`)
-* **Configuration File**: `render.yaml` (auto-detects routing and headers)
+* **Publish Directory**: `./`
+* **Configuration File**: `render.yaml`
 
-Every commit pushed to the `main` branch on GitHub triggers an automatic deployment on Render.
+Every commit pushed to the `main` branch on GitHub automatically updates the live Render website.
 
 ---
 
 ## 💻 How to Run Locally
 
-You can preview the website locally using Python:
+You can also preview the website locally using Python:
 
 ```bash
 python server.py
@@ -71,8 +76,6 @@ Then visit in your web browser:
 http://localhost:8080
 ```
 
-You can also simply open `index.html` directly in any modern web browser.
-
 ---
 
 ## 📁 Project Structure
@@ -82,7 +85,7 @@ d:\bookmark_cafe\
 ├── index.html          # Semantic responsive HTML5 structure
 ├── render.yaml         # Render hosting blueprint configuration
 ├── server.py           # Local development Python server
-├── README.md           # Project documentation
+├── README.md           # Project documentation with live demo
 ├── css/
 │   └── styles.css      # Custom styling, bookmark ribbons, animations
 └── js/
