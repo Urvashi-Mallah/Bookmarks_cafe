@@ -406,29 +406,17 @@ function setupCartDrawer() {
                 dateStr: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
             };
 
-            // Save order data for when user completes WhatsApp order and returns to official page
-            sessionStorage.setItem('tbc_confirmed_order', JSON.stringify(orderData));
+            // Save pending order data (do NOT confirm or clear cart yet!)
+            sessionStorage.setItem('tbc_pending_order', JSON.stringify(orderData));
             sessionStorage.setItem('tbc_awaiting_whatsapp_return', 'true');
 
-            // 1. Play realistic cafe service bell sound (Ding-Dong!)
-            playOrderBellSound();
-
-            // 2. Close the cart drawer
+            // Close the cart drawer
             toggleDrawer(false);
 
-            // 3. Clear cart after brief moment
+            // Show verify prompt on official page so customer can confirm once sent
             setTimeout(() => {
-                cart.clear();
-                renderMenuItems();
-            }, 500);
-
-            // 4. Also display receipt on official page
-            setTimeout(() => {
-                showOrderConfirmationNote(orderData);
-            }, 800);
-
-            // 5. Toast notification
-            showToast(`🔔 <strong>Order Confirmed!</strong> Note #${orderId} generated & sent.`, 'bookmark');
+                showWhatsAppVerifyPrompt();
+            }, 700);
         });
     }
 
@@ -505,14 +493,6 @@ function setupOrderConfirmationModal() {
     const modal = document.getElementById('order-confirmation-modal');
     const closeBtn = document.getElementById('close-order-modal');
     const doneBtn = document.getElementById('order-modal-done-btn');
-    const replaySoundBtn = document.getElementById('replay-bell-sound-btn');
-
-    if (replaySoundBtn) {
-        replaySoundBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            playOrderBellSound();
-        });
-    }
 
     if (closeBtn && modal) {
         closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
@@ -527,29 +507,69 @@ function setupOrderConfirmationModal() {
     }
 }
 
-// Listen for customer returning from WhatsApp to the official Bookmark Cafe page
-function setupWhatsAppReturnListener() {
-    // Unlock browser audio context on any user touch/click anywhere
-    document.addEventListener('pointerdown', unlockAudio, { once: true });
-    document.addEventListener('keydown', unlockAudio, { once: true });
+// Show WhatsApp verification modal
+function showWhatsAppVerifyPrompt() {
+    const verifyModal = document.getElementById('whatsapp-verify-modal');
+    if (verifyModal) {
+        verifyModal.classList.remove('hidden');
+        if (window.lucide) window.lucide.createIcons();
+    }
+}
 
+// Setup WhatsApp verification modal events
+function setupWhatsAppVerifyModal() {
+    const verifyModal = document.getElementById('whatsapp-verify-modal');
+    const confirmBtn = document.getElementById('confirm-order-sent-btn');
+    const cancelBtn = document.getElementById('cancel-order-sent-btn');
+    const closeBtn = document.getElementById('close-verify-modal');
+
+    const handleConfirm = () => {
+        sessionStorage.removeItem('tbc_awaiting_whatsapp_return');
+        if (verifyModal) verifyModal.classList.add('hidden');
+
+        const savedOrderStr = sessionStorage.getItem('tbc_pending_order');
+        if (savedOrderStr) {
+            try {
+                const orderData = JSON.parse(savedOrderStr);
+
+                // 1. Play the bell notification sound!
+                playOrderBellSound();
+
+                // 2. Show the official receipt modal (2nd pic)!
+                showOrderConfirmationNote(orderData);
+
+                // 3. Clear cart since order is confirmed
+                cart.clear();
+                renderMenuItems();
+
+                // 4. Toast notification
+                showToast(`🔔 <strong>Order Confirmed!</strong> Note #${orderData.orderId} dispatched to kitchen.`, 'bookmark');
+            } catch (e) {
+                console.error('Error confirming order:', e);
+            }
+        }
+    };
+
+    const handleCancel = () => {
+        sessionStorage.removeItem('tbc_awaiting_whatsapp_return');
+        if (verifyModal) verifyModal.classList.add('hidden');
+        showToast('Order not placed yet. Your items are saved in your tray.', 'info');
+    };
+
+    if (confirmBtn) confirmBtn.addEventListener('click', handleConfirm);
+    if (cancelBtn) cancelBtn.addEventListener('click', handleCancel);
+    if (closeBtn) closeBtn.addEventListener('click', handleCancel);
+    if (verifyModal) {
+        verifyModal.addEventListener('click', (e) => {
+            if (e.target === verifyModal) handleCancel();
+        });
+    }
+
+    // Trigger verify prompt when customer returns to official Bookmark Cafe page from WhatsApp
     const handleReturn = () => {
         const awaiting = sessionStorage.getItem('tbc_awaiting_whatsapp_return');
         if (awaiting === 'true') {
-            sessionStorage.removeItem('tbc_awaiting_whatsapp_return');
-            const savedOrderStr = sessionStorage.getItem('tbc_confirmed_order');
-            if (savedOrderStr) {
-                try {
-                    const orderData = JSON.parse(savedOrderStr);
-                    // 1. Play the loud bell chime sound when returning to the official page!
-                    playOrderBellSound();
-                    // 2. Display the official receipt note modal!
-                    showOrderConfirmationNote(orderData);
-                    showToast(`🔔 <strong>Order Confirmed!</strong> Note #${orderData.orderId} dispatched to cafe.`, 'bookmark');
-                } catch (e) {
-                    console.error('Error handling order return:', e);
-                }
-            }
+            showWhatsAppVerifyPrompt();
         }
     };
 
@@ -559,6 +579,10 @@ function setupWhatsAppReturnListener() {
             handleReturn();
         }
     });
+
+    // Audio unlock on user touch anywhere on page
+    document.addEventListener('pointerdown', unlockAudio, { once: true });
+    document.addEventListener('keydown', unlockAudio, { once: true });
 }
 
 // Setup Dietary Filter Buttons
@@ -804,7 +828,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCartDrawer();
     setupCartDrawer();
     setupOrderConfirmationModal();
-    setupWhatsAppReturnListener();
+    setupWhatsAppVerifyModal();
     setupDietaryFilters();
     setupReservation();
     renderGallery();
