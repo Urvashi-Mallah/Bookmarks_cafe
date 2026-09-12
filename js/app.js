@@ -201,7 +201,7 @@ function renderMenuItems() {
             const id = btn.dataset.id;
             cart.addItem(id);
             const item = MENU_ITEMS.find(i => i.id === id);
-            showToast(`Added <strong>${item.name}</strong> to your Taste Tray!`, 'bookmark');
+            showToast(`Added <strong>${item.name}</strong> to Taste Tray! <button class="open-tray-btn underline font-bold text-amber-300 ml-1.5 cursor-pointer">View Tray</button>`, 'bookmark');
             renderMenuItems();
             if (window.lucide) window.lucide.createIcons();
         });
@@ -249,22 +249,6 @@ function renderCartDrawer() {
         subtotalEl.textContent = `₹${subtotal}`;
     }
 
-    // Update floating bar
-    const floatingBar = document.getElementById('floating-tray-bar');
-    const floatingCount = document.getElementById('floating-tray-count');
-    const floatingTotal = document.getElementById('floating-tray-total');
-    if (floatingBar) {
-        if (totalCount > 0) {
-            floatingBar.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
-            floatingBar.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
-            if (floatingCount) floatingCount.textContent = `(${totalCount} ${totalCount === 1 ? 'item' : 'items'})`;
-            if (floatingTotal) floatingTotal.textContent = `₹${subtotal}`;
-        } else {
-            floatingBar.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
-            floatingBar.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
-        }
-    }
-
     if (!container) return;
 
     if (cart.items.length === 0) {
@@ -278,38 +262,37 @@ function renderCartDrawer() {
     if (trayFooter) trayFooter.classList.remove('hidden');
 
     container.innerHTML = cart.items.map(item => `
-        <div class="flex items-start sm:items-center justify-between gap-3.5 p-3.5 sm:p-4 bg-[#24170e] hover:bg-[#2b1b11] transition-colors rounded-2xl border border-[#3e2617] shadow-sm">
+        <div class="flex items-center justify-between gap-3 p-2.5 sm:p-3 bg-[#24170e] hover:bg-[#2a1b11] transition-colors rounded-xl border border-[#3e2617] shadow-xs">
             <img 
                 src="${item.image}" 
                 alt="${item.name}" 
-                class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover flex-shrink-0 border border-amber-900/40 shadow"
+                class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg object-cover flex-shrink-0 border border-amber-900/40 shadow-xs"
                 loading="lazy"
                 onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80'"
             />
             <div class="flex-grow min-w-0 pr-1">
-                <div class="flex items-start gap-1.5 mb-1">
-                    <span class="diet-indicator ${item.isVeg ? 'diet-veg' : 'diet-nonveg'} scale-75 mt-0.5 flex-shrink-0"></span>
-                    <h4 class="font-semibold text-sm sm:text-base text-[#f6eee2] leading-snug break-words">${item.name}</h4>
+                <div class="flex items-center gap-1.5 mb-0.5">
+                    <span class="diet-indicator ${item.isVeg ? 'diet-veg' : 'diet-nonveg'} scale-75 flex-shrink-0"></span>
+                    <h4 class="font-semibold text-xs sm:text-sm text-[#f6eee2] leading-tight break-words">${item.name}</h4>
                 </div>
-                <div class="text-xs text-amber-400 font-medium flex items-center flex-wrap gap-x-2 gap-y-0.5 mt-1">
+                <div class="text-[11px] text-amber-400 font-medium flex items-center flex-wrap gap-x-1.5">
                     <span>₹${item.price} each</span>
                     <span class="text-neutral-500">•</span>
                     <span class="text-amber-300 font-bold">Total: ₹${item.price * item.quantity}</span>
                 </div>
             </div>
-            <div class="flex flex-col items-end gap-2 flex-shrink-0">
-                <div class="flex items-center gap-1.5 bg-[#170e08] rounded-xl p-1 border border-[#482c1a]">
-                    <button data-cart-dec="${item.id}" class="w-7 h-7 rounded-lg flex items-center justify-center text-amber-400 hover:bg-amber-900/40 text-xs transition" aria-label="Decrease quantity">
-                        <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+            <div class="flex items-center gap-2 flex-shrink-0">
+                <div class="flex items-center bg-[#170e08] rounded-lg p-0.5 border border-[#482c1a]">
+                    <button data-cart-dec="${item.id}" class="w-6 h-6 rounded flex items-center justify-center text-amber-400 hover:bg-amber-900/40 text-xs transition" aria-label="Decrease quantity">
+                        <i data-lucide="minus" class="w-3 h-3"></i>
                     </button>
-                    <span class="text-xs font-bold w-6 text-center text-amber-200">${item.quantity}</span>
-                    <button data-cart-inc="${item.id}" class="w-7 h-7 rounded-lg flex items-center justify-center text-amber-400 hover:bg-amber-900/40 text-xs transition" aria-label="Increase quantity">
-                        <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                    <span class="text-xs font-bold w-5 text-center text-amber-200">${item.quantity}</span>
+                    <button data-cart-inc="${item.id}" class="w-6 h-6 rounded flex items-center justify-center text-amber-400 hover:bg-amber-900/40 text-xs transition" aria-label="Increase quantity">
+                        <i data-lucide="plus" class="w-3 h-3"></i>
                     </button>
                 </div>
-                <button data-cart-remove="${item.id}" class="text-neutral-400 hover:text-rose-400 p-1.5 rounded-lg hover:bg-rose-950/30 transition text-xs flex items-center gap-1" title="Remove item" aria-label="Remove item">
+                <button data-cart-remove="${item.id}" class="text-neutral-500 hover:text-rose-400 p-1.5 rounded-lg hover:bg-rose-950/30 transition text-xs" title="Remove item" aria-label="Remove item">
                     <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                    <span class="text-[10px] hidden sm:inline">Remove</span>
                 </button>
             </div>
         </div>
