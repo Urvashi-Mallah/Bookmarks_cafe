@@ -157,7 +157,7 @@ function renderMenuItems() {
                                 ${item.name}
                             </h3>
                         </div>
-                        <p class="text-sm text-[#5c4a3d] line-clamp-2 leading-relaxed mb-4">
+                        <p class="text-xs sm:text-sm text-[#5c4a3d] leading-relaxed mb-4 break-words">
                             ${item.description}
                         </p>
                         <div class="flex flex-wrap gap-1.5 mb-4">
