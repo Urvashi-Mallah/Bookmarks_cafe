@@ -406,17 +406,20 @@ function setupCartDrawer() {
                 dateStr: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
             };
 
-            // Save pending order data (do NOT confirm or clear cart yet!)
-            sessionStorage.setItem('tbc_pending_order', JSON.stringify(orderData));
-            sessionStorage.setItem('tbc_awaiting_whatsapp_return', 'true');
+            // 1. Play the hotel service bell chime sound directly!
+            playOrderBellSound();
 
-            // Close the cart drawer
+            // 2. Clear cart since order is placed
+            cart.clear();
+            renderMenuItems();
+
+            // 3. Close the cart drawer
             toggleDrawer(false);
 
-            // Show verify prompt on official page so customer can confirm once sent
+            // 4. Show the straight confirmation receipt page (no scroll, no notification options)!
             setTimeout(() => {
-                showWhatsAppVerifyPrompt();
-            }, 700);
+                showOrderConfirmationNote(orderData);
+            }, 300);
         });
     }
 
@@ -436,51 +439,51 @@ function setupCartDrawer() {
     });
 }
 
-// Show Order Confirmation Note Modal
+// Show Order Confirmation Note Modal (Straight Page, No Scrolling)
 function showOrderConfirmationNote(orderData) {
     const modal = document.getElementById('order-confirmation-modal');
     const detailsContainer = document.getElementById('order-confirmation-details');
     if (!modal || !detailsContainer) return;
 
     detailsContainer.innerHTML = `
-        <div class="flex justify-between items-center border-b border-[#3e2617] pb-2">
-            <span class="text-neutral-400">Order Reference:</span>
-            <span class="font-mono text-xs font-bold text-amber-400 bg-amber-950/80 border border-amber-800/60 px-2 py-0.5 rounded">${orderData.orderId}</span>
+        <div class="flex justify-between items-center border-b border-[#3e2617] pb-1.5">
+            <span class="text-neutral-400 text-[11px]">Order Reference:</span>
+            <span class="font-mono text-xs font-bold text-amber-400 bg-amber-950/90 border border-amber-800/60 px-2 py-0.5 rounded">${orderData.orderId}</span>
         </div>
-        <div class="flex justify-between items-center pt-1">
+        <div class="flex justify-between items-center text-[11px] pt-0.5">
             <span class="text-neutral-400">Order Preference:</span>
             <span class="font-semibold text-neutral-200">${orderData.orderType}</span>
         </div>
         ${orderData.dateStr ? `
-        <div class="flex justify-between items-center pt-0.5 text-[11px]">
+        <div class="flex justify-between items-center text-[11px]">
             <span class="text-neutral-400">Order Placed:</span>
             <span class="text-neutral-300 font-medium">${orderData.dateStr}</span>
         </div>` : ''}
         ${orderData.notes ? `
-        <div class="flex justify-between items-start pt-1">
-            <span class="text-neutral-400">Customer Note:</span>
-            <span class="font-medium text-amber-200 text-right max-w-[200px] italic break-words">"${orderData.notes}"</span>
+        <div class="flex justify-between items-start text-[11px] pt-0.5">
+            <span class="text-neutral-400">Note:</span>
+            <span class="font-medium text-amber-200 text-right max-w-[180px] italic truncate">"${orderData.notes}"</span>
         </div>` : ''}
-        <div class="border-t border-[#3e2617] pt-2 mt-1 space-y-1">
-            <div class="flex justify-between text-neutral-400 text-[11px]">
+        <div class="border-t border-[#3e2617] pt-1.5 mt-1">
+            <div class="flex justify-between text-neutral-400 text-[11px] mb-1">
                 <span>Ordered Items (${orderData.totalCount}):</span>
                 <span>Price</span>
             </div>
-            <div class="space-y-1.5 max-h-36 overflow-y-auto pr-1">
+            <div class="space-y-1 max-h-24 overflow-y-auto pr-0.5">
                 ${orderData.items.map(item => `
                     <div class="flex justify-between items-center text-xs">
-                        <span class="text-neutral-200 truncate pr-2 flex items-center gap-1.5">
+                        <span class="text-neutral-200 truncate pr-2 flex items-center gap-1">
                             <span class="diet-indicator ${item.isVeg ? 'diet-veg' : 'diet-nonveg'} scale-75 flex-shrink-0"></span>
-                            <span>${item.name} <strong class="text-amber-300">×${item.quantity}</strong></span>
+                            <span class="truncate">${item.name} <strong class="text-amber-300">×${item.quantity}</strong></span>
                         </span>
                         <span class="font-semibold text-amber-300 flex-shrink-0">₹${item.price * item.quantity}</span>
                     </div>
                 `).join('')}
             </div>
         </div>
-        <div class="border-t border-[#3e2617] pt-2.5 mt-1 flex justify-between items-center font-bold">
+        <div class="border-t border-[#3e2617] pt-1.5 mt-1 flex justify-between items-center font-bold">
             <span class="text-white text-xs">Estimated Bill Total:</span>
-            <span class="text-amber-400 font-serif text-lg">₹${orderData.subtotal}</span>
+            <span class="text-amber-400 font-serif text-base sm:text-lg">₹${orderData.subtotal}</span>
         </div>
     `;
 
@@ -507,80 +510,8 @@ function setupOrderConfirmationModal() {
     }
 }
 
-// Show WhatsApp verification modal
-function showWhatsAppVerifyPrompt() {
-    const verifyModal = document.getElementById('whatsapp-verify-modal');
-    if (verifyModal) {
-        verifyModal.classList.remove('hidden');
-        if (window.lucide) window.lucide.createIcons();
-    }
-}
-
-// Setup WhatsApp verification modal events
-function setupWhatsAppVerifyModal() {
-    const verifyModal = document.getElementById('whatsapp-verify-modal');
-    const confirmBtn = document.getElementById('confirm-order-sent-btn');
-    const cancelBtn = document.getElementById('cancel-order-sent-btn');
-    const closeBtn = document.getElementById('close-verify-modal');
-
-    const handleConfirm = () => {
-        sessionStorage.removeItem('tbc_awaiting_whatsapp_return');
-        if (verifyModal) verifyModal.classList.add('hidden');
-
-        const savedOrderStr = sessionStorage.getItem('tbc_pending_order');
-        if (savedOrderStr) {
-            try {
-                const orderData = JSON.parse(savedOrderStr);
-
-                // 1. Play the bell notification sound!
-                playOrderBellSound();
-
-                // 2. Show the official receipt modal (2nd pic)!
-                showOrderConfirmationNote(orderData);
-
-                // 3. Clear cart since order is confirmed
-                cart.clear();
-                renderMenuItems();
-
-                // 4. Toast notification
-                showToast(`🔔 <strong>Order Confirmed!</strong> Note #${orderData.orderId} dispatched to kitchen.`, 'bookmark');
-            } catch (e) {
-                console.error('Error confirming order:', e);
-            }
-        }
-    };
-
-    const handleCancel = () => {
-        sessionStorage.removeItem('tbc_awaiting_whatsapp_return');
-        if (verifyModal) verifyModal.classList.add('hidden');
-        showToast('Order not placed yet. Your items are saved in your tray.', 'info');
-    };
-
-    if (confirmBtn) confirmBtn.addEventListener('click', handleConfirm);
-    if (cancelBtn) cancelBtn.addEventListener('click', handleCancel);
-    if (closeBtn) closeBtn.addEventListener('click', handleCancel);
-    if (verifyModal) {
-        verifyModal.addEventListener('click', (e) => {
-            if (e.target === verifyModal) handleCancel();
-        });
-    }
-
-    // Trigger verify prompt when customer returns to official Bookmark Cafe page from WhatsApp
-    const handleReturn = () => {
-        const awaiting = sessionStorage.getItem('tbc_awaiting_whatsapp_return');
-        if (awaiting === 'true') {
-            showWhatsAppVerifyPrompt();
-        }
-    };
-
-    window.addEventListener('focus', handleReturn);
-    document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible') {
-            handleReturn();
-        }
-    });
-
-    // Audio unlock on user touch anywhere on page
+// Setup audio unlocking on user interaction
+function setupAudioUnlock() {
     document.addEventListener('pointerdown', unlockAudio, { once: true });
     document.addEventListener('keydown', unlockAudio, { once: true });
 }
@@ -828,7 +759,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCartDrawer();
     setupCartDrawer();
     setupOrderConfirmationModal();
-    setupWhatsAppVerifyModal();
+    setupAudioUnlock();
     setupDietaryFilters();
     setupReservation();
     renderGallery();
