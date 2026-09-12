@@ -2,6 +2,7 @@
 import { MENU_ITEMS, MENU_CATEGORIES, CAFE_INFO, TESTIMONIALS, GALLERY_IMAGES, FAQS } from './data.js';
 import { cart } from './cart.js';
 import { reservationManager } from './reservation.js';
+import { playOrderBellSound, unlockAudio } from './audio.js';
 
 // Application State
 const state = {
@@ -36,58 +37,6 @@ export function showToast(message, type = 'info') {
         toast.classList.add('removing');
         setTimeout(() => toast.remove(), 260);
     }, 3200);
-}
-
-// Sound Notification: Realistic Cafe Service Bell Chime (Web Audio API)
-export function playOrderBellSound() {
-    try {
-        const AudioCtx = window.AudioContext || window.webkitAudioContext;
-        if (!AudioCtx) return;
-        const ctx = new AudioCtx();
-
-        if (ctx.state === 'suspended') {
-            ctx.resume();
-        }
-
-        const now = ctx.currentTime;
-
-        const playTone = (freq, startTime, duration, vol = 0.35) => {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(freq, startTime);
-
-            gain.gain.setValueAtTime(0.001, startTime);
-            gain.gain.exponentialRampToValueAtTime(vol, startTime + 0.015);
-            gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
-
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.start(startTime);
-            osc.stop(startTime + duration);
-
-            // Shimmer overtone (service bell characteristic)
-            const overtone = ctx.createOscillator();
-            const gainOvertone = ctx.createGain();
-            overtone.type = 'triangle';
-            overtone.frequency.setValueAtTime(freq * 2.756, startTime);
-
-            gainOvertone.gain.setValueAtTime(vol * 0.25, startTime);
-            gainOvertone.gain.exponentialRampToValueAtTime(0.0001, startTime + duration * 0.6);
-
-            overtone.connect(gainOvertone);
-            gainOvertone.connect(ctx.destination);
-            overtone.start(startTime);
-            overtone.stop(startTime + duration);
-        };
-
-        // Melodic Cafe Service Bell Chime: Ding (C6) -> Dong (E6) -> High shimmer (C7)
-        playTone(1046.5, now, 0.85, 0.4);          // C6
-        playTone(1318.51, now + 0.15, 1.3, 0.45);   // E6
-        playTone(2093.0, now + 0.16, 0.75, 0.15);  // C7 shimmer
-    } catch (err) {
-        console.warn('Bell chime notification could not play:', err);
-    }
 }
 
 // Render Menu Categories Tabs
@@ -447,27 +396,36 @@ function setupCartDrawer() {
             const orderItemsCopy = cart.items.map(i => ({ ...i }));
             const orderId = `TBC-ORD-${Math.floor(1000 + Math.random() * 9000)}`;
 
-            // 1. Play realistic cafe service bell sound (Ding-Dong!)
-            playOrderBellSound();
-
-            // 2. Show the Order Confirmation Note modal
-            showOrderConfirmationNote({
+            const orderData = {
                 orderId,
                 orderType,
                 notes,
                 totalCount,
                 subtotal,
-                items: orderItemsCopy
-            });
+                items: orderItemsCopy,
+                dateStr: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+            };
 
-            // 3. Close the cart drawer
+            // Save order data for when user completes WhatsApp order and returns to official page
+            sessionStorage.setItem('tbc_confirmed_order', JSON.stringify(orderData));
+            sessionStorage.setItem('tbc_awaiting_whatsapp_return', 'true');
+
+            // 1. Play realistic cafe service bell sound (Ding-Dong!)
+            playOrderBellSound();
+
+            // 2. Close the cart drawer
             toggleDrawer(false);
 
-            // 4. Reset cart after a brief moment
+            // 3. Clear cart after brief moment
             setTimeout(() => {
                 cart.clear();
                 renderMenuItems();
             }, 500);
+
+            // 4. Also display receipt on official page
+            setTimeout(() => {
+                showOrderConfirmationNote(orderData);
+            }, 800);
 
             // 5. Toast notification
             showToast(`🔔 <strong>Order Confirmed!</strong> Note #${orderId} generated & sent.`, 'bookmark');
@@ -505,6 +463,11 @@ function showOrderConfirmationNote(orderData) {
             <span class="text-neutral-400">Order Preference:</span>
             <span class="font-semibold text-neutral-200">${orderData.orderType}</span>
         </div>
+        ${orderData.dateStr ? `
+        <div class="flex justify-between items-center pt-0.5 text-[11px]">
+            <span class="text-neutral-400">Order Placed:</span>
+            <span class="text-neutral-300 font-medium">${orderData.dateStr}</span>
+        </div>` : ''}
         ${orderData.notes ? `
         <div class="flex justify-between items-start pt-1">
             <span class="text-neutral-400">Customer Note:</span>
@@ -542,6 +505,14 @@ function setupOrderConfirmationModal() {
     const modal = document.getElementById('order-confirmation-modal');
     const closeBtn = document.getElementById('close-order-modal');
     const doneBtn = document.getElementById('order-modal-done-btn');
+    const replaySoundBtn = document.getElementById('replay-bell-sound-btn');
+
+    if (replaySoundBtn) {
+        replaySoundBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            playOrderBellSound();
+        });
+    }
 
     if (closeBtn && modal) {
         closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
@@ -554,6 +525,40 @@ function setupOrderConfirmationModal() {
             if (e.target === modal) modal.classList.add('hidden');
         });
     }
+}
+
+// Listen for customer returning from WhatsApp to the official Bookmark Cafe page
+function setupWhatsAppReturnListener() {
+    // Unlock browser audio context on any user touch/click anywhere
+    document.addEventListener('pointerdown', unlockAudio, { once: true });
+    document.addEventListener('keydown', unlockAudio, { once: true });
+
+    const handleReturn = () => {
+        const awaiting = sessionStorage.getItem('tbc_awaiting_whatsapp_return');
+        if (awaiting === 'true') {
+            sessionStorage.removeItem('tbc_awaiting_whatsapp_return');
+            const savedOrderStr = sessionStorage.getItem('tbc_confirmed_order');
+            if (savedOrderStr) {
+                try {
+                    const orderData = JSON.parse(savedOrderStr);
+                    // 1. Play the loud bell chime sound when returning to the official page!
+                    playOrderBellSound();
+                    // 2. Display the official receipt note modal!
+                    showOrderConfirmationNote(orderData);
+                    showToast(`🔔 <strong>Order Confirmed!</strong> Note #${orderData.orderId} dispatched to cafe.`, 'bookmark');
+                } catch (e) {
+                    console.error('Error handling order return:', e);
+                }
+            }
+        }
+    };
+
+    window.addEventListener('focus', handleReturn);
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+            handleReturn();
+        }
+    });
 }
 
 // Setup Dietary Filter Buttons
@@ -799,6 +804,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCartDrawer();
     setupCartDrawer();
     setupOrderConfirmationModal();
+    setupWhatsAppReturnListener();
     setupDietaryFilters();
     setupReservation();
     renderGallery();
