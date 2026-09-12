@@ -406,20 +406,16 @@ function setupCartDrawer() {
                 dateStr: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
             };
 
-            // 1. Play the hotel service bell chime sound directly!
-            playOrderBellSound();
+            // 1. Save pending order data & flag for when customer returns to official page
+            sessionStorage.setItem('tbc_pending_order', JSON.stringify(orderData));
+            sessionStorage.setItem('tbc_awaiting_return', 'true');
+            sessionStorage.setItem('tbc_order_click_time', Date.now().toString());
 
-            // 2. Clear cart since order is placed
-            cart.clear();
-            renderMenuItems();
+            // 2. Pre-unlock audio so browser allows instant playback on return
+            unlockAudio();
 
-            // 3. Close the cart drawer
+            // 3. Close the cart drawer (Do not show modal or play sound yet!)
             toggleDrawer(false);
-
-            // 4. Show the straight confirmation receipt page (no scroll, no notification options)!
-            setTimeout(() => {
-                showOrderConfirmationNote(orderData);
-            }, 300);
         });
     }
 
@@ -510,10 +506,64 @@ function setupOrderConfirmationModal() {
     }
 }
 
-// Setup audio unlocking on user interaction
-function setupAudioUnlock() {
-    document.addEventListener('pointerdown', unlockAudio, { once: true });
-    document.addEventListener('keydown', unlockAudio, { once: true });
+// Listen for customer returning from WhatsApp to the official Bookmark Cafe page
+function setupOrderReturnListener() {
+    const checkAndShowConfirmation = () => {
+        const awaiting = sessionStorage.getItem('tbc_awaiting_return');
+        if (awaiting !== 'true') return;
+
+        const clickTime = parseInt(sessionStorage.getItem('tbc_order_click_time') || '0', 10);
+        const elapsed = Date.now() - clickTime;
+
+        // Wait until at least 600ms have elapsed so it only triggers on return from WhatsApp
+        if (elapsed < 600) {
+            setTimeout(checkAndShowConfirmation, 600 - elapsed);
+            return;
+        }
+
+        const savedOrderStr = sessionStorage.getItem('tbc_pending_order');
+        if (!savedOrderStr) return;
+
+        try {
+            sessionStorage.removeItem('tbc_awaiting_return');
+            sessionStorage.removeItem('tbc_pending_order');
+            sessionStorage.removeItem('tbc_order_click_time');
+
+            const orderData = JSON.parse(savedOrderStr);
+
+            // 1. Clear cart now that user placed order and returned
+            cart.clear();
+            renderMenuItems();
+
+            // 2. Play the hotel service bell chime sound!
+            playOrderBellSound();
+
+            // 3. Display the official straight receipt page (no scrolling, no notification options)!
+            showOrderConfirmationNote(orderData);
+        } catch (e) {
+            console.error('Error confirming order on return:', e);
+        }
+    };
+
+    // Trigger confirmation when customer returns to official page
+    window.addEventListener('focus', checkAndShowConfirmation);
+    window.addEventListener('pageshow', checkAndShowConfirmation);
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+            checkAndShowConfirmation();
+        }
+    });
+
+    // Audio unlock & fallback check on user touch anywhere on page
+    document.addEventListener('pointerdown', () => {
+        unlockAudio();
+        checkAndShowConfirmation();
+    }, { passive: true });
+
+    document.addEventListener('keydown', () => {
+        unlockAudio();
+        checkAndShowConfirmation();
+    }, { passive: true });
 }
 
 // Setup Dietary Filter Buttons
@@ -759,7 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCartDrawer();
     setupCartDrawer();
     setupOrderConfirmationModal();
-    setupAudioUnlock();
+    setupOrderReturnListener();
     setupDietaryFilters();
     setupReservation();
     renderGallery();
