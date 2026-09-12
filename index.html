@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bookmark Cafe | Where Good Books Meet Artisan Brews - Kalyan West</title>
+    <meta name="description" content="Step into The Bookmark Cafe in Kalyan West through our secret book-cover door. Enjoy handcrafted coffee, rich Belgian hot chocolate, pizzas, and 1,000+ curated books.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cafe: {
+                            espresso: '#190e07',
+                            mocha: '#24150c',
+                            leather: '#452b1b',
+                            amber: '#d97706',
+                            gold: '#c28e46',
+                            parchment: '#f7f1e6',
+                            cream: '#fdfbf7',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-cafe-pattern text-[#ede5da] antialiased selection:bg-amber-600 selection:text-white">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Announcement / Quick Contact Header Bar -->
+    <header class="bg-[#120a05] text-[#b89f8a] text-xs py-2 px-4 border-b border-amber-950/60 flex flex-wrap justify-between items-center gap-2">
+        <div class="flex items-center gap-4 mx-auto md:mx-0">
+            <span class="flex items-center gap-1.5 text-amber-400">
+                <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                <strong class="font-medium text-neutral-200">The Bookmark Cafe</strong> — Kalyan's Secret Literary Retreat
+            </span>
+            <span class="hidden sm:inline-block text-neutral-600">|</span>
+            <span class="hidden sm:flex items-center gap-1">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-500"></i> Open Today: 11:30 AM – 11:00 PM
+            </span>
+        </div>
+        <div class="flex items-center gap-4 mx-auto md:mx-0">
+            <a href="tel:+918421190965" class="flex items-center gap-1 hover:text-amber-400 transition">
+                <i data-lucide="phone-call" class="w-3.5 h-3.5 text-amber-400"></i> +91 8421190965
+            </a>
+            <a href="https://wa.me/918421190965?text=Hello%20The%20Bookmark%20Cafe!%20I'd%20like%20to%20inquire%20about%20a%20table%20or%20menu." target="_blank" rel="noopener" class="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <nav class="sticky top-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-600 to-amber-900 flex items-center justify-center shadow-lg shadow-amber-950/50 border border-amber-500/30 group-hover:scale-105 transition-transform">
+                        <i data-lucide="book-marked" class="w-6 h-6 text-amber-200"></i>
+                    </div>
+                    <div>
+                        <span class="font-cinzel text-xl font-bold tracking-wider text-white block group-hover:text-amber-400 transition-colors">
+                            THE BOOKMARK CAFE
+                        </span>
+                        <span class="text-[11px] uppercase tracking-widest text-amber-500 font-semibold block -mt-0.5">
+                            Kalyan West • Brews & Books
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center space-x-7 text-sm font-medium">
+                    <a href="#story" class="text-neutral-300 hover:text-amber-400 transition-colors">Our Story</a>
+                    <a href="#menu" class="text-neutral-300 hover:text-amber-400 transition-colors">Menu</a>
+                    <a href="#book-corner" class="text-neutral-300 hover:text-amber-400 transition-colors">Book Exchange</a>
+                    <a href="#reservation" class="text-neutral-300 hover:text-amber-400 transition-colors">Book a Table</a>
+                    <a href="#gallery" class="text-neutral-300 hover:text-amber-400 transition-colors">Ambiance</a>
+                    <a href="#contact" class="text-neutral-300 hover:text-amber-400 transition-colors">Visit Us</a>
+                </div>
+
+                <!-- Action Buttons & Tray Counter -->
+                <div class="flex items-center space-x-3">
+                    <!-- Taste Tray Button -->
+                    <button class="open-tray-btn relative p-2.5 rounded-xl bg-[#2b1a10] border border-amber-700/50 text-amber-200 hover:bg-amber-900/40 hover:text-amber-300 transition-all flex items-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        <span class="hidden sm:inline text-xs font-bold uppercase tracking-wider">Taste Tray</span>
+                        <span class="cart-count-badge hidden absolute -top-2 -right-2 bg-amber-500 text-black text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-lg">0</span>
+                    </button>
+
+                    <!-- Table Booking CTA -->
+                    <a href="#reservation" class="hidden lg:flex btn-amber-glow text-black font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl items-center gap-1.5 shadow-md">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>Reserve Table</span>
+                    </a>
+
+                    <!-- Mobile Menu Hamburger -->
+                    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-neutral-300 hover:text-white hover:bg-neutral-800 transition">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl -translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-between p-6">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-amber-950">
+                <div class="flex items-center gap-2">
+                    <div class="w-10 h-10 rounded-lg bg-amber-700 flex items-center justify-center">
+                        <i data-lucide="book-marked" class="w-5 h-5 text-amber-100"></i>
+                    </div>
+                    <span class="font-cinzel text-lg font-bold text-white">THE BOOKMARK CAFE</span>
+                </div>
+                <button id="mobile-menu-close" class="p-2 text-neutral-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <nav class="mt-8 flex flex-col space-y-5 text-lg font-serif">
+                <a href="#story" class="mobile-nav-link text-neutral-300 hover:text-amber-400">The Secret Book Door Story</a>
+                <a href="#menu" class="mobile-nav-link text-neutral-300 hover:text-amber-400">Explore Cafe Menu</a>
+                <a href="#book-corner" class="mobile-nav-link text-neutral-300 hover:text-amber-400">Community Book Shelf</a>
+                <a href="#reservation" class="mobile-nav-link text-neutral-300 hover:text-amber-400">Reserve a Cozy Nook</a>
+                <a href="#gallery" class="mobile-nav-link text-neutral-300 hover:text-amber-400">Photo Ambiance</a>
+                <a href="#contact" class="mobile-nav-link text-neutral-300 hover:text-amber-400">Location & Timings</a>
+            </nav>
+        </div>
+
+        <div class="pt-6 border-t border-amber-950 space-y-3">
+            <a href="tel:+918421190965" class="w-full py-3 bg-[#24150c] border border-amber-800 text-amber-300 rounded-xl flex items-center justify-center gap-2 font-bold text-sm">
+                <i data-lucide="phone" class="w-4 h-4"></i> Call: +91 8421190965
+            </a>
+            <a href="https://wa.me/918421190965" target="_blank" class="w-full py-3 bg-emerald-600 text-white rounded-xl flex items-center justify-center gap-2 font-bold text-sm">
+                <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Us Directly
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-16 lg:py-24">
+        <!-- Background Image with Moody Literary Overlays -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1920&q=80" 
+                alt="The Bookmark Cafe Library Ambiance" 
+                class="w-full h-full object-cover object-center filter brightness-[0.38] contrast-125 scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-b from-[#140b06]/85 via-[#170f09]/80 to-[#170f09]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-900/20 via-transparent to-black/60"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-950/70 border border-amber-600/40 text-amber-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                <span>Kalyan's Hidden Literary Sanctuary</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="font-serif-title text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#fdfbf7] tracking-tight leading-tight mb-6">
+                Step Through The Book Door <br class="hidden sm:inline">
+                Into A World Of <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500">Stories & Brews</span>.
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="max-w-2xl mx-auto text-base sm:text-xl text-[#d4c5b3] font-light leading-relaxed mb-10">
+                Where steaming Belgian hot chocolates, woodfire-style pizzas, and rich Arabica roasts blend seamlessly with over 1,000 curated books and warm conversation.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-14">
+                <a href="#menu" class="w-full sm:w-auto btn-amber-glow text-black font-extrabold px-8 py-4 rounded-xl flex items-center justify-center gap-3 text-base shadow-xl">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                    <span>Explore Our Menu</span>
+                </a>
+                <a href="#reservation" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#2e1c12]/90 hover:bg-[#3d2518] text-amber-200 border border-amber-600/50 flex items-center justify-center gap-3 text-base font-bold transition-all backdrop-blur-md">
+                    <i data-lucide="bookmark-plus" class="w-5 h-5 text-amber-400"></i>
+                    <span>Reserve a Nook</span>
+                </a>
+                <a href="https://wa.me/918421190965?text=Hello%20Bookmark%20Cafe!%20I'd%20like%20to%20place%20an%20order/inquiry" target="_blank" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-emerald-950/80 hover:bg-emerald-900/90 text-emerald-300 border border-emerald-600/40 flex items-center justify-center gap-2 text-base font-bold transition-all backdrop-blur-md">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <span>WhatsApp Order</span>
+                </a>
+            </div>
+
+            <!-- Quick Highlight Badges -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-amber-950/70">
+                <div class="p-3 rounded-xl bg-[#1e120a]/60 border border-amber-900/30 backdrop-blur-sm">
+                    <div class="font-serif text-xl sm:text-2xl font-bold text-amber-400">1,000+</div>
+                    <div class="text-xs text-neutral-400 font-medium">Curated Books to Read</div>
+                </div>
+                <div class="p-3 rounded-xl bg-[#1e120a]/60 border border-amber-900/30 backdrop-blur-sm">
+                    <div class="font-serif text-xl sm:text-2xl font-bold text-amber-400">4.4 ★</div>
+                    <div class="text-xs text-neutral-400 font-medium">850+ Happy Reviews</div>
+                </div>
+                <div class="p-3 rounded-xl bg-[#1e120a]/60 border border-amber-900/30 backdrop-blur-sm">
+                    <div class="font-serif text-xl sm:text-2xl font-bold text-amber-400">Arabica</div>
+                    <div class="text-xs text-neutral-400 font-medium">Fresh Specialty Roasts</div>
+                </div>
+                <div class="p-3 rounded-xl bg-[#1e120a]/60 border border-amber-900/30 backdrop-blur-sm">
+                    <div class="font-serif text-xl sm:text-2xl font-bold text-amber-400">High-Speed</div>
+                    <div class="text-xs text-neutral-400 font-medium">Wi-Fi & Work Friendly</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Secret Book Door Story Section -->
+    <section id="story" class="py-20 bg-[#1a1009] border-y border-amber-950/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Image Side with Book Door Concept -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-amber-700/30">
+                        <img 
+                            src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80" 
+                            alt="The Secret Book Door at The Bookmark Cafe" 
+                            class="w-full h-[460px] object-cover"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <span class="bookmark-ribbon mb-2 inline-block">The Kalyan Landmark</span>
+                            <h3 class="text-xl font-serif font-bold text-white">The Secret Book-Cover Entrance</h3>
+                            <p class="text-xs text-neutral-300 mt-1">Push open a giant bookshelf cover to enter Kalyan's coziest dining haven.</p>
+                        </div>
+                    </div>
+                    <!-- Decorative Floating Card -->
+                    <div class="hidden sm:block absolute -bottom-6 -right-6 bg-[#2b1a10] border border-amber-600/50 p-4 rounded-2xl shadow-xl max-w-xs">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-amber-600/30 text-amber-400 flex items-center justify-center">
+                                <i data-lucide="coffee" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-neutral-400">Philosophy</div>
+                                <div class="text-sm font-bold text-neutral-100">"Stories brewed fresh daily"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content Side -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold uppercase tracking-widest">
+                        <i data-lucide="feather" class="w-4 h-4"></i>
+                        <span>About The Bookmark Cafe</span>
+                    </div>
+
+                    <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-white leading-tight">
+                        Not Just A Cafe. A Sanctuary For The Mind & Palate.
+                    </h2>
+
+                    <p class="text-[#c7b7a4] text-base sm:text-lg leading-relaxed font-light">
+                        Tucked away near Adharwadi Jail Road in Kalyan West, <strong class="text-amber-400 font-semibold">The Bookmark Cafe</strong> was born out of a deep affection for timeless literature, slow sips, and soulful comfort food.
+                    </p>
+
+                    <p class="text-[#b3a18e] text-sm sm:text-base leading-relaxed">
+                        In an era of relentless hurry, we built a place where you can lose track of time. Whether you're here to dive into a captivating mystery novel, work remotely on your laptop with steaming cappuccino, engage in a spirited game of Catan with friends, or savor our famous <strong class="text-amber-300">Belgian Hot Chocolate</strong> and <strong class="text-amber-300">Burrata Pizza</strong>, our doors are open.
+                    </p>
+
+                    <!-- Three Pillars -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-[#22150d] border border-amber-900/40">
+                            <i data-lucide="library" class="w-6 h-6 text-amber-500 mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">1,000+ Books</h4>
+                            <p class="text-xs text-neutral-400 mt-1">Fiction, poetry, philosophy, manga, and youth classics freely accessible.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-[#22150d] border border-amber-900/40">
+                            <i data-lucide="utensils-crossed" class="w-6 h-6 text-amber-500 mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">Gourmet Kitchen</h4>
+                            <p class="text-xs text-neutral-400 mt-1">Hand-stretched pizzas, pink sauce pastas, oriental pot rice & loaded fries.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-[#22150d] border border-amber-900/40">
+                            <i data-lucide="dices" class="w-6 h-6 text-amber-500 mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">Board Games</h4>
+                            <p class="text-xs text-neutral-400 mt-1">Free board games, acoustic evenings, and community book swap club.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Digital Menu Section -->
+    <section id="menu" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold uppercase tracking-widest mb-2">
+                <i data-lucide="book-open-check" class="w-4 h-4"></i>
+                <span>Freshly Crafted Daily</span>
+            </div>
+            <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-white mb-4">
+                The Literary Menu
+            </h2>
+            <p class="text-neutral-400 text-sm sm:text-base">
+                Explore our signature beverages, handcrafted Italian pastas, gourmet burgers, and rich desserts. Add items to your <span class="text-amber-400 font-semibold">Taste Tray</span> to pre-order or inquire directly via WhatsApp.
+            </p>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="bg-[#1f130b] p-4 sm:p-6 rounded-2xl border border-amber-900/40 shadow-xl mb-8 space-y-4">
+            <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+                <!-- Real-time Search Input -->
+                <div class="relative w-full md:w-80">
+                    <i data-lucide="search" class="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                    <input 
+                        type="text" 
+                        id="menu-search-input" 
+                        placeholder="Search burrata, hot chocolate, fries..." 
+                        class="w-full bg-[#150c07] border border-[#422919] rounded-xl pl-10 pr-4 py-2.5 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-amber-500 transition"
+                    />
+                </div>
+
+                <!-- Dietary Filter Tabs -->
+                <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                    <button data-filter="all" class="diet-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition bg-amber-600 text-white border border-amber-500">
+                        All Items
+                    </button>
+                    <button data-filter="veg" class="diet-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition bg-[#23170e] text-[#d6c7b2] border border-[#42291a] hover:border-emerald-600/50 flex items-center gap-1.5">
+                        <span class="diet-indicator diet-veg scale-75"></span> Veg Only
+                    </button>
+                    <button data-filter="nonveg" class="diet-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition bg-[#23170e] text-[#d6c7b2] border border-[#42291a] hover:border-rose-600/50 flex items-center gap-1.5">
+                        <span class="diet-indicator diet-nonveg scale-75"></span> Non-Veg
+                    </button>
+                    <button data-filter="bestseller" class="diet-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition bg-[#23170e] text-[#d6c7b2] border border-[#42291a] hover:border-amber-500 flex items-center gap-1.5">
+                        <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i> Bestsellers
+                    </button>
+                </div>
+            </div>
+
+            <!-- Category Pills Horizontal Scroll -->
+            <div id="category-tabs" class="flex items-center gap-2 overflow-x-auto pb-2 pt-2 border-t border-[#311c11] no-scrollbar">
+                <!-- Dynamically injected via app.js -->
+            </div>
+        </div>
+
+        <!-- Menu Items Grid -->
+        <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Dynamically populated via app.js -->
+        </div>
+
+        <!-- Empty State Message -->
+        <div id="menu-empty" class="hidden text-center py-16 bg-[#20130a] rounded-2xl border border-dashed border-amber-900/50">
+            <i data-lucide="cup-soda" class="w-12 h-12 text-amber-600 mx-auto mb-3"></i>
+            <h3 class="font-serif text-xl font-bold text-white mb-1">No delicacies matched your search</h3>
+            <p class="text-sm text-neutral-400 mb-4">Try clearing filters or search for another dish.</p>
+            <button onclick="document.getElementById('menu-search-input').value=''; document.querySelector('[data-filter=\'all\']').click();" class="btn-amber-glow text-black font-bold px-4 py-2 rounded-lg text-xs">
+                Reset Filters
+            </button>
+        </div>
+
+        <!-- WhatsApp Custom Request Banner -->
+        <div class="mt-12 p-6 rounded-2xl bg-gradient-to-r from-[#29170e] via-[#331c11] to-[#29170e] border border-amber-700/40 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-600/30 text-emerald-400 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="message-square-plus" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-white">Have dietary preferences or custom catering?</h4>
+                    <p class="text-xs text-neutral-300">Jain-friendly preparations, party platters, and custom brews can be arranged via WhatsApp.</p>
+                </div>
+            </div>
+            <a href="https://wa.me/918421190965?text=Hello%20The%20Bookmark%20Cafe!%20I'd%20like%20to%20request%20a%20custom%20dish%20or%20event%20catering." target="_blank" class="btn-amber-glow text-black font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl flex items-center gap-2 whitespace-nowrap shadow-lg">
+                <i data-lucide="message-circle" class="w-4 h-4"></i> Chat on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Community Book Exchange & Ambiance Feature -->
+    <section id="book-corner" class="py-20 bg-[#160e08] border-y border-amber-950/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="bookmark-ribbon mb-2 inline-block">Bibliophile Haven</span>
+                <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-white mb-4">
+                    The Community Book Exchange
+                </h2>
+                <p class="text-neutral-400 text-sm sm:text-base">
+                    "Take a Book, Leave a Book." We celebrate the magic of shared stories.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-600/20 border border-amber-500/30 flex items-center justify-center mx-auto mb-5 text-amber-400">
+                        <i data-lucide="book-plus" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-2">1. Bring a Novel</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">
+                        Bring along any novel, manga, poetry collection, or non-fiction title you loved and want someone else to discover.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-600/20 border border-amber-500/30 flex items-center justify-center mx-auto mb-5 text-amber-400">
+                        <i data-lucide="repeat" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-2">2. Swap on the Shelf</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">
+                        Place it on our designated Community Shelf and pick any other book to read during your coffee or take it home.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-600/20 border border-amber-500/30 flex items-center justify-center mx-auto mb-5 text-amber-400">
+                        <i data-lucide="users" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-white mb-2">3. Join the Book Club</h3>
+                    <p class="text-sm text-neutral-400 leading-relaxed">
+                        Meet fellow bibliophiles, participate in our monthly book discussions, and enjoy cozy acoustic evenings.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Book of the Month Feature Card -->
+            <div class="bg-gradient-to-r from-[#2b190f] to-[#1f120a] p-8 rounded-3xl border border-amber-700/50 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="space-y-4 max-w-xl">
+                    <div class="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider">
+                        <i data-lucide="award" class="w-4 h-4"></i> Curated Pairing Of The Month
+                    </div>
+                    <h3 class="font-serif-title text-2xl sm:text-3xl font-bold text-white">
+                        "The Midnight Library" by Matt Haig
+                    </h3>
+                    <p class="text-sm text-neutral-300 leading-relaxed">
+                        Pair this heartwarming story about infinite possibilities and parallel lives with our <strong class="text-amber-400">Hazelnut Dark Hot Chocolate</strong>. Grab the copy right off Shelf #3 during your visit!
+                    </p>
+                    <div class="flex items-center gap-4 pt-2">
+                        <div class="text-xs text-neutral-400">Availability: <span class="text-emerald-400 font-bold">In Cafe Shelf (Free to Read)</span></div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-auto flex-shrink-0 flex gap-4">
+                    <a href="#reservation" class="btn-amber-glow text-black font-bold px-6 py-3 rounded-xl text-sm shadow-md">
+                        Reserve a Reading Table
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table & Nook Reservation Section -->
+    <section id="reservation" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-5 space-y-6">
+                <div class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold uppercase tracking-widest">
+                    <i data-lucide="calendar-check" class="w-4 h-4"></i>
+                    <span>Guaranteed Seating</span>
+                </div>
+                <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-white leading-tight">
+                    Reserve Your Cozy Nook.
+                </h2>
+                <p class="text-neutral-300 text-sm sm:text-base leading-relaxed">
+                    Planning a quiet study session, a romantic coffee date, or a book club meetup? Let us keep your preferred table ready with soft lighting and prompt service.
+                </p>
+
+                <!-- Amenities Checklist -->
+                <div class="space-y-3 pt-2">
+                    <div class="flex items-center gap-3 text-sm text-neutral-300">
+                        <div class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-3 h-3"></i>
+                        </div>
+                        <span>Fast, complimentary Wi-Fi and power outlets at work desks</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-neutral-300">
+                        <div class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-3 h-3"></i>
+                        </div>
+                        <span>Cozy reading lamps and bookshelf proximity</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-neutral-300">
+                        <div class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-3 h-3"></i>
+                        </div>
+                        <span>Direct confirmation sent to your WhatsApp</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-neutral-300">
+                        <div class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                            <i data-lucide="check" class="w-3 h-3"></i>
+                        </div>
+                        <span>No reservation fee or deposit required</span>
+                    </div>
+                </div>
+
+                <!-- Instant Assistance Callout -->
+                <div class="p-5 rounded-2xl bg-[#23150c] border border-amber-900/40">
+                    <div class="text-xs text-neutral-400 mb-1">Need an immediate table for the next 30 minutes?</div>
+                    <div class="text-sm font-bold text-white flex items-center justify-between">
+                        <span>Direct Line: <a href="tel:+918421190965" class="text-amber-400 underline">+91 8421190965</a></span>
+                        <a href="tel:+918421190965" class="px-3 py-1 bg-amber-600 text-black text-xs font-bold rounded-lg hover:bg-amber-500 transition">Call Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form Card -->
+            <div class="lg:col-span-7">
+                <div class="glass-card p-6 sm:p-8 rounded-3xl border border-amber-700/40 shadow-2xl">
+                    <h3 class="font-serif text-2xl font-bold text-white mb-2">Table Booking Details</h3>
+                    <p class="text-xs text-neutral-400 mb-6">Fill in your preferences and we'll confirm promptly.</p>
+
+                    <form id="reservation-form" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-300 mb-1">Your Full Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="res-name" 
+                                    required 
+                                    placeholder="e.g. Aditi Sharma" 
+                                    class="w-full bg-[#170e08] border border-[#482e1d] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500"
+                                />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-300 mb-1">Phone Number (for WhatsApp) *</label>
+                                <input 
+                                    type="tel" 
+                                    id="res-phone" 
+                                    required 
+                                    placeholder="e.g. 9876543210" 
+                                    class="w-full bg-[#170e08] border border-[#482e1d] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-300 mb-1">Party Size *</label>
+                                <select id="res-guests" class="w-full bg-[#170e08] border border-[#482e1d] rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                                    <option value="1">1 Person (Solo Reader)</option>
+                                    <option value="2" selected>2 Persons (Cozy Table)</option>
+                                    <option value="3">3 - 4 Persons (Group Table)</option>
+                                    <option value="5">5 - 6 Persons (Family / Study)</option>
+                                    <option value="7+">7+ Persons (Book Club / Party)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-300 mb-1">Date *</label>
+                                <input 
+                                    type="date" 
+                                    id="res-date" 
+                                    required 
+                                    class="w-full bg-[#170e08] border border-[#482e1d] rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-amber-500"
+                                />
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-300 mb-1">Time Slot *</label>
+                                <select id="res-time" class="w-full bg-[#170e08] border border-[#482e1d] rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                                    <option value="12:00 PM">12:00 PM (Lunch)</option>
+                                    <option value="01:30 PM">01:30 PM</option>
+                                    <option value="03:00 PM">03:00 PM (Afternoon Brews)</option>
+                                    <option value="04:30 PM">04:30 PM (Evening Reading)</option>
+                                    <option value="06:00 PM">06:00 PM</option>
+                                    <option value="07:30 PM" selected>07:30 PM (Dinner Hour)</option>
+                                    <option value="09:00 PM">09:00 PM (Late Night Chill)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-300 mb-1">Seating Preference</label>
+                                <select id="res-seating" class="w-full bg-[#170e08] border border-[#482e1d] rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                                    <option value="Cozy Reading Nook (Near Bookshelves)">Cozy Reading Nook (Near Bookshelves)</option>
+                                    <option value="Window Work Bench (Power Outlets)">Window Work Bench (Power Outlets)</option>
+                                    <option value="Central Dining Table">Central Dining Table</option>
+                                    <option value="Quiet Corner Table">Quiet Corner Table</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-neutral-300 mb-1">Occasion / Purpose</label>
+                                <select id="res-occasion" class="w-full bg-[#170e08] border border-[#482e1d] rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-amber-500">
+                                    <option value="Casual Reading & Coffee">Casual Reading & Coffee</option>
+                                    <option value="Date Night">Date Night</option>
+                                    <option value="Remote Work / Study">Remote Work / Study</option>
+                                    <option value="Birthday / Celebration">Birthday / Celebration</option>
+                                    <option value="Book Club Meetup">Book Club Meetup</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-neutral-300 mb-1">Email Address (Optional)</label>
+                            <input 
+                                type="email" 
+                                id="res-email" 
+                                placeholder="name@example.com" 
+                                class="w-full bg-[#170e08] border border-[#482e1d] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500"
+                            />
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-neutral-300 mb-1">Special Notes / Dietary Requests</label>
+                            <textarea 
+                                id="res-notes" 
+                                rows="2" 
+                                placeholder="e.g. Jain food options, birthday candle on brownie, quiet spot..." 
+                                class="w-full bg-[#170e08] border border-[#482e1d] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500 resize-none"
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full btn-amber-glow text-black font-extrabold py-4 px-6 rounded-xl flex items-center justify-center gap-2 text-base shadow-xl uppercase tracking-wider">
+                            <i data-lucide="bookmark" class="w-5 h-5"></i>
+                            <span>Confirm Reservation Request</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Confirmation Modal -->
+    <div id="reservation-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-[#1e120a] border border-amber-600/60 rounded-3xl max-w-md w-full p-6 text-center shadow-2xl animate-fade-in relative">
+            <button id="close-reservation-modal" class="absolute top-4 right-4 text-neutral-400 hover:text-white p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="w-16 h-16 rounded-full bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="check-circle" class="w-8 h-8"></i>
+            </div>
+
+            <h3 class="font-serif-title text-2xl font-bold text-white mb-1">Table Request Received!</h3>
+            <p class="text-xs text-neutral-300 mb-4">We have recorded your booking request at The Bookmark Cafe.</p>
+
+            <div id="reservation-modal-details"></div>
+
+            <div class="space-y-3">
+                <a id="reservation-whatsapp-send-btn" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span>Send Details to Cafe WhatsApp (+91 8421190965)</span>
+                </a>
+                <button onclick="document.getElementById('reservation-modal').classList.add('hidden')" class="w-full py-2.5 text-xs text-neutral-400 hover:text-white">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram Gallery & Ambiance Showcase -->
+    <section id="gallery" class="py-20 bg-[#160d07] border-y border-amber-950/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold uppercase tracking-widest mb-1">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                        <span>Social Feed & Vibe</span>
+                    </div>
+                    <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-white">
+                        Memories At The Cafe
+                    </h2>
+                </div>
+                <a href="https://instagram.com/thebookmarkcafe_" target="_blank" class="text-sm font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 border-b border-amber-500/40 pb-1">
+                    <span>Follow @thebookmarkcafe_ on Instagram</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected via app.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Wall of Love Section -->
+    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+            <span class="bookmark-ribbon mb-2 inline-block">Voices Of Kalyan</span>
+            <h2 class="font-serif-title text-3xl sm:text-5xl font-bold text-white mb-3">
+                Loved By Readers & Foodies
+            </h2>
+            <p class="text-neutral-400 text-sm sm:text-base">
+                Over 850+ five-star reviews across Google, Swiggy, and Magicpin.
+            </p>
+        </div>
+
+        <div id="testimonials-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Injected via app.js -->
+        </div>
+    </section>
+
+    <!-- Visit Us, Location & FAQs Section -->
+    <section id="contact" class="py-20 bg-[#190f09] border-t border-amber-950/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Location & Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-amber-500 text-xs font-bold uppercase tracking-widest">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                        <span>Kalyan West Location</span>
+                    </div>
+                    <h2 class="font-serif-title text-3xl sm:text-4xl font-bold text-white leading-tight">
+                        Find Your Way To The Bookshelf.
+                    </h2>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-[#23150c] border border-amber-900/30">
+                            <div class="w-10 h-10 rounded-lg bg-amber-600/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="navigation" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Full Address</h4>
+                                <p class="text-xs text-neutral-300 leading-relaxed mt-0.5">
+                                    Shop No. 4, Patil Bungalow, Gandhar Nagar Road, Adharwadi Jail Road, Kalyan West, Maharashtra 421301.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-[#23150c] border border-amber-900/30">
+                            <div class="w-10 h-10 rounded-lg bg-amber-600/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Operating Hours</h4>
+                                <p class="text-xs text-neutral-300 leading-relaxed mt-0.5">
+                                    Monday to Sunday: <strong>11:30 AM – 11:00 PM</strong> (Dine-in & Takeaway)
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-[#23150c] border border-amber-900/30">
+                            <div class="w-10 h-10 rounded-lg bg-amber-600/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Direct Contact & WhatsApp</h4>
+                                <p class="text-xs text-neutral-300 leading-relaxed mt-0.5">
+                                    Call or WhatsApp: <a href="tel:+918421190965" class="text-amber-400 font-bold">+91 8421190965</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Action Buttons -->
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="https://maps.google.com/?q=The+Bookmark+Cafe+Kalyan+West" target="_blank" class="btn-amber-glow text-black font-bold text-xs uppercase px-5 py-3 rounded-xl flex items-center gap-2 shadow-md">
+                            <i data-lucide="map" class="w-4 h-4"></i>
+                            <span>Get Directions</span>
+                        </a>
+                        <a href="https://wa.me/918421190965?text=Hello%20The%20Bookmark%20Cafe!" target="_blank" class="bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs uppercase px-5 py-3 rounded-xl flex items-center gap-2 shadow-md transition">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed & FAQs -->
+                <div class="lg:col-span-7 space-y-8">
+                    <!-- Google Maps Card -->
+                    <div class="rounded-2xl overflow-hidden border border-amber-800/40 shadow-xl h-64 bg-[#23150c] relative">
+                        <iframe 
+                            title="The Bookmark Cafe Location Map"
+                            src="https://maps.google.com/maps?q=The%20Bookmark%20Cafe%2C%20Patil%20Bunglow%2C%20Adharwadi%20Jail%20Road%2C%20Kalyan%20West&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            class="grayscale contrast-125 opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                        ></iframe>
+                    </div>
+
+                    <!-- FAQs Accordion -->
+                    <div>
+                        <h3 class="font-serif text-2xl font-bold text-white mb-4">Frequently Asked Questions</h3>
+                        <div id="faq-accordion" class="space-y-3">
+                            <!-- Injected via app.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Taste Tray Slide-Out Drawer -->
+    <div id="tray-backdrop" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden opacity-0 tray-overlay"></div>
+    <div id="taste-tray-drawer" class="fixed top-0 right-0 bottom-0 z-50 w-full sm:w-[420px] bg-[#1a1009] border-l border-amber-700/40 shadow-2xl flex flex-col justify-between translate-x-full tray-panel">
+        <!-- Tray Header -->
+        <div class="p-5 border-b border-[#3b2416] flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-9 h-9 rounded-lg bg-amber-600/30 text-amber-400 flex items-center justify-center">
+                    <i data-lucide="bookmark-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif text-lg font-bold text-white">Your Taste Tray</h3>
+                    <p class="text-xs text-neutral-400">Order directly on WhatsApp to +91 8421190965</p>
+                </div>
+            </div>
+            <button id="close-tray-btn" class="p-1.5 text-neutral-400 hover:text-white rounded-lg">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Tray Item List Container -->
+        <div class="p-5 flex-grow overflow-y-auto space-y-3">
+            <div id="tray-empty-notice" class="text-center py-16 text-neutral-400 space-y-3">
+                <i data-lucide="shopping-bag" class="w-12 h-12 text-amber-700 mx-auto"></i>
+                <h4 class="font-bold text-neutral-200">Your Taste Tray is Empty</h4>
+                <p class="text-xs max-w-xs mx-auto">Browse our menu and click "Add to Taste Tray" to curate your order.</p>
+            </div>
+            <div id="tray-items" class="space-y-3"></div>
+        </div>
+
+        <!-- Tray Footer / Checkout -->
+        <div id="tray-footer" class="p-5 border-t border-[#3b2416] bg-[#140b06] space-y-4">
+            <div class="flex justify-between items-center text-sm">
+                <span class="text-neutral-400">Order Preference:</span>
+                <select id="order-type-select" class="bg-[#24150c] text-xs font-bold text-amber-300 border border-amber-900 rounded-lg px-2.5 py-1.5 focus:outline-none">
+                    <option value="Dine-in Pre-order">Dine-in Pre-order</option>
+                    <option value="Takeaway / Pickup">Takeaway / Pickup</option>
+                    <option value="Home Delivery Inquiry">Delivery Inquiry</option>
+                </select>
+            </div>
+
+            <div>
+                <input 
+                    type="text" 
+                    id="order-notes-input" 
+                    placeholder="Notes (e.g. Table 4, less spicy, extra hot)..." 
+                    class="w-full bg-[#20120a] border border-[#3f2516] rounded-xl px-3 py-2 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-amber-500"
+                />
+            </div>
+
+            <div class="flex justify-between items-center border-t border-[#331c0f] pt-3">
+                <span class="text-neutral-300 font-bold text-sm">Estimated Total:</span>
+                <span id="tray-subtotal" class="font-serif text-2xl font-bold text-amber-400">₹0</span>
+            </div>
+
+            <div class="space-y-2">
+                <a 
+                    id="tray-whatsapp-btn" 
+                    href="#" 
+                    target="_blank" 
+                    class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg transition"
+                >
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <span>Send Order to WhatsApp (+91 8421190965)</span>
+                </a>
+
+                <div class="flex justify-between items-center pt-1">
+                    <button id="clear-tray-btn" class="text-xs text-neutral-500 hover:text-rose-400 flex items-center gap-1">
+                        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear Tray
+                    </button>
+                    <span class="text-[11px] text-neutral-500">Pay directly at cafe / on delivery</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#100703] border-t border-amber-950 text-neutral-400 text-xs py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-amber-700 flex items-center justify-center text-white">
+                            <i data-lucide="book-marked" class="w-4 h-4"></i>
+                        </div>
+                        <span class="font-cinzel text-base font-bold text-white">THE BOOKMARK CAFE</span>
+                    </div>
+                    <p class="text-neutral-400 leading-relaxed text-xs">
+                        Kalyan's secret literary escape where stories brew and coffee speaks. Bringing lovers of good literature and gourmet flavors together under one roof.
+                    </p>
+                    <div class="text-amber-500 font-serif italic text-xs pt-1">
+                        "I have always imagined that Paradise will be a kind of library."
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider mb-3">Quick Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#story" class="hover:text-amber-400 transition">Our Story & Book Door</a></li>
+                        <li><a href="#menu" class="hover:text-amber-400 transition">Food & Beverage Menu</a></li>
+                        <li><a href="#book-corner" class="hover:text-amber-400 transition">Book Exchange Shelf</a></li>
+                        <li><a href="#reservation" class="hover:text-amber-400 transition">Table & Study Nook Booking</a></li>
+                        <li><a href="#contact" class="hover:text-amber-400 transition">Location & Directions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider mb-3">Signature Specialties</h4>
+                    <ul class="space-y-2">
+                        <li><span class="text-neutral-300">Belgian Dark Hot Chocolate</span></li>
+                        <li><span class="text-neutral-300">Burrata & Pesto Artisan Pizza</span></li>
+                        <li><span class="text-neutral-300">Pink Sauce Fettuccine</span></li>
+                        <li><span class="text-neutral-300">Warm Sizzling Walnut Brownie</span></li>
+                        <li><span class="text-neutral-300">Lotus Biscoff Crumble Shake</span></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="font-bold text-white uppercase tracking-wider mb-3">Connect With Us</h4>
+                    <p class="text-neutral-400">Shop No. 4, Patil Bungalow, Adharwadi Jail Road, Kalyan West 421301</p>
+                    <p class="text-neutral-200 font-semibold">Phone: <a href="tel:+918421190965" class="text-amber-400 hover:underline">+91 8421190965</a></p>
+                    <p class="text-neutral-200 font-semibold">Instagram: <a href="https://instagram.com/thebookmarkcafe_" target="_blank" class="text-amber-400 hover:underline">@thebookmarkcafe_</a></p>
+                    <div class="pt-2 flex gap-3">
+                        <a href="https://wa.me/918421190965" target="_blank" class="w-8 h-8 rounded-full bg-emerald-600/30 text-emerald-400 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://instagram.com/thebookmarkcafe_" target="_blank" class="w-8 h-8 rounded-full bg-rose-600/30 text-rose-400 flex items-center justify-center hover:bg-rose-600 hover:text-white transition">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="tel:+918421190965" class="w-8 h-8 rounded-full bg-amber-600/30 text-amber-400 flex items-center justify-center hover:bg-amber-600 hover:text-black transition">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-amber-950/60 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-neutral-500">
+                <p>© 2026 The Bookmark Cafe (Kalyan West). All rights reserved.</p>
+                <p>Designed with ❤️ for Indian bibliophiles & coffee enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- App JavaScript Modules -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "the-bookmark-cafe",
+  "version": "1.0.0",
+  "description": "Website for The Bookmark Cafe in Kalyan West, India",
+  "main": "index.html",
+  "scripts": {
+    "start": "python server.py"
+  },
+  "keywords": [
+    "cafe",
+    "kalyan",
+    "bookmark-cafe",
+    "restaurant",
+    "mumbai"
+  ],
+  "author": "The Bookmark Cafe",
+  "license": "MIT"
+}

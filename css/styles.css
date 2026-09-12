@@ -1,0 +1,215 @@
+/* Custom Styles for The Bookmark Cafe */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --cafe-espresso: #1e130c;
+    --cafe-mocha: #2d1e18;
+    --cafe-leather: #4a2f22;
+    --cafe-amber: #d97706;
+    --cafe-gold: #c28e46;
+    --cafe-cream: #faf7f2;
+    --cafe-parchment: #f4eee5;
+    --cafe-green: #2c5e43;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #170f09;
+    color: #ede5da;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .font-serif-title {
+    font-family: 'Playfair Display', serif;
+}
+
+.font-cinzel {
+    font-family: 'Cinzel', serif;
+}
+
+/* Custom Amber Bookmark Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #170f09;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #78350f;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d97706;
+}
+
+/* Atmospheric Background Gradient & Texture */
+.bg-cafe-pattern {
+    background-color: #1c120a;
+    background-image: radial-gradient(rgba(217, 119, 6, 0.08) 1px, transparent 1px), radial-gradient(rgba(194, 142, 70, 0.05) 1px, #170f09 1px);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+}
+
+/* Glassmorphism Navigation & Cards */
+.glass-nav {
+    background: rgba(28, 18, 10, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(217, 119, 6, 0.18);
+}
+
+.glass-card {
+    background: rgba(35, 23, 14, 0.72);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(217, 119, 6, 0.15);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(217, 119, 6, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.6);
+}
+
+/* Bookmark Ribbon Badge */
+.bookmark-ribbon {
+    position: relative;
+    background: #b45309;
+    color: #fff;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 6px), 50% 100%, 0% calc(100% - 6px));
+}
+
+/* Food Diet Indicator Icons (FSSAI standard) */
+.diet-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border-width: 1.5px;
+}
+
+.diet-veg {
+    border-color: #10b981;
+}
+
+.diet-veg::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #10b981;
+}
+
+.diet-nonveg {
+    border-color: #ef4444;
+}
+
+.diet-nonveg::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #ef4444;
+}
+
+/* Coffee Steam Gentle Keyframe */
+@keyframes steamFloat {
+    0% {
+        transform: translateY(0) scaleX(1);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(-8px) scaleX(1.15);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-16px) scaleX(1);
+        opacity: 0;
+    }
+}
+
+.animate-steam {
+    animation: steamFloat 3s infinite ease-in-out;
+}
+
+/* Drawer Transitions */
+.tray-overlay {
+    transition: opacity 0.3s ease;
+}
+
+.tray-panel {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glowing Button Accents */
+.btn-amber-glow {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    box-shadow: 0 4px 18px rgba(217, 119, 6, 0.35);
+    transition: all 0.25s ease;
+}
+
+.btn-amber-glow:hover {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 6px 24px rgba(217, 119, 6, 0.55);
+    transform: translateY(-1px);
+}
+
+/* Toast Notifications */
+#toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.toast {
+    pointer-events: auto;
+    background: #25160d;
+    color: #fef3c7;
+    border: 1px solid #b45309;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    padding: 12px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: toastIn 0.3s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toastIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.toast.removing {
+    animation: toastOut 0.25s forwards ease-in;
+}
+
+@keyframes toastOut {
+    to {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+}
