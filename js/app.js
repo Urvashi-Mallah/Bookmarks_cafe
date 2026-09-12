@@ -38,6 +38,58 @@ export function showToast(message, type = 'info') {
     }, 3200);
 }
 
+// Sound Notification: Realistic Cafe Service Bell Chime (Web Audio API)
+export function playOrderBellSound() {
+    try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+
+        if (ctx.state === 'suspended') {
+            ctx.resume();
+        }
+
+        const now = ctx.currentTime;
+
+        const playTone = (freq, startTime, duration, vol = 0.35) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, startTime);
+
+            gain.gain.setValueAtTime(0.001, startTime);
+            gain.gain.exponentialRampToValueAtTime(vol, startTime + 0.015);
+            gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(startTime);
+            osc.stop(startTime + duration);
+
+            // Shimmer overtone (service bell characteristic)
+            const overtone = ctx.createOscillator();
+            const gainOvertone = ctx.createGain();
+            overtone.type = 'triangle';
+            overtone.frequency.setValueAtTime(freq * 2.756, startTime);
+
+            gainOvertone.gain.setValueAtTime(vol * 0.25, startTime);
+            gainOvertone.gain.exponentialRampToValueAtTime(0.0001, startTime + duration * 0.6);
+
+            overtone.connect(gainOvertone);
+            gainOvertone.connect(ctx.destination);
+            overtone.start(startTime);
+            overtone.stop(startTime + duration);
+        };
+
+        // Melodic Cafe Service Bell Chime: Ding (C6) -> Dong (E6) -> High shimmer (C7)
+        playTone(1046.5, now, 0.85, 0.4);          // C6
+        playTone(1318.51, now + 0.15, 1.3, 0.45);   // E6
+        playTone(2093.0, now + 0.16, 0.75, 0.15);  // C7 shimmer
+    } catch (err) {
+        console.warn('Bell chime notification could not play:', err);
+    }
+}
+
 // Render Menu Categories Tabs
 function renderCategories() {
     const container = document.getElementById('category-tabs');
@@ -377,6 +429,51 @@ function setupCartDrawer() {
     if (closeBtn) closeBtn.addEventListener('click', () => toggleDrawer(false));
     if (overlay) overlay.addEventListener('click', () => toggleDrawer(false));
 
+    // Handle Order Confirmation on WhatsApp order button click
+    const whatsappBtn = document.getElementById('tray-whatsapp-btn');
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', (e) => {
+            if (cart.items.length === 0) {
+                e.preventDefault();
+                showToast('Your Taste Tray is empty! Add dishes to order first.', 'info');
+                return;
+            }
+
+            const orderTypeSelect = document.getElementById('order-type-select');
+            const orderNotesInput = document.getElementById('order-notes-input');
+            const orderType = orderTypeSelect ? orderTypeSelect.value : 'Dine-in Pre-order';
+            const notes = orderNotesInput ? orderNotesInput.value.trim() : '';
+            const { totalCount, subtotal } = cart.getSummary();
+            const orderItemsCopy = cart.items.map(i => ({ ...i }));
+            const orderId = `TBC-ORD-${Math.floor(1000 + Math.random() * 9000)}`;
+
+            // 1. Play realistic cafe service bell sound (Ding-Dong!)
+            playOrderBellSound();
+
+            // 2. Show the Order Confirmation Note modal
+            showOrderConfirmationNote({
+                orderId,
+                orderType,
+                notes,
+                totalCount,
+                subtotal,
+                items: orderItemsCopy
+            });
+
+            // 3. Close the cart drawer
+            toggleDrawer(false);
+
+            // 4. Reset cart after a brief moment
+            setTimeout(() => {
+                cart.clear();
+                renderMenuItems();
+            }, 500);
+
+            // 5. Toast notification
+            showToast(`🔔 <strong>Order Confirmed!</strong> Note #${orderId} generated & sent.`, 'bookmark');
+        });
+    }
+
     if (clearBtn) {
         clearBtn.addEventListener('click', () => {
             if (confirm('Are you sure you want to clear your taste tray?')) {
@@ -391,6 +488,72 @@ function setupCartDrawer() {
         renderCartDrawer();
         if (window.lucide) window.lucide.createIcons();
     });
+}
+
+// Show Order Confirmation Note Modal
+function showOrderConfirmationNote(orderData) {
+    const modal = document.getElementById('order-confirmation-modal');
+    const detailsContainer = document.getElementById('order-confirmation-details');
+    if (!modal || !detailsContainer) return;
+
+    detailsContainer.innerHTML = `
+        <div class="flex justify-between items-center border-b border-[#3e2617] pb-2">
+            <span class="text-neutral-400">Order Reference:</span>
+            <span class="font-mono text-xs font-bold text-amber-400 bg-amber-950/80 border border-amber-800/60 px-2 py-0.5 rounded">${orderData.orderId}</span>
+        </div>
+        <div class="flex justify-between items-center pt-1">
+            <span class="text-neutral-400">Order Preference:</span>
+            <span class="font-semibold text-neutral-200">${orderData.orderType}</span>
+        </div>
+        ${orderData.notes ? `
+        <div class="flex justify-between items-start pt-1">
+            <span class="text-neutral-400">Customer Note:</span>
+            <span class="font-medium text-amber-200 text-right max-w-[200px] italic break-words">"${orderData.notes}"</span>
+        </div>` : ''}
+        <div class="border-t border-[#3e2617] pt-2 mt-1 space-y-1">
+            <div class="flex justify-between text-neutral-400 text-[11px]">
+                <span>Ordered Items (${orderData.totalCount}):</span>
+                <span>Price</span>
+            </div>
+            <div class="space-y-1.5 max-h-36 overflow-y-auto pr-1">
+                ${orderData.items.map(item => `
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="text-neutral-200 truncate pr-2 flex items-center gap-1.5">
+                            <span class="diet-indicator ${item.isVeg ? 'diet-veg' : 'diet-nonveg'} scale-75 flex-shrink-0"></span>
+                            <span>${item.name} <strong class="text-amber-300">×${item.quantity}</strong></span>
+                        </span>
+                        <span class="font-semibold text-amber-300 flex-shrink-0">₹${item.price * item.quantity}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        <div class="border-t border-[#3e2617] pt-2.5 mt-1 flex justify-between items-center font-bold">
+            <span class="text-white text-xs">Estimated Bill Total:</span>
+            <span class="text-amber-400 font-serif text-lg">₹${orderData.subtotal}</span>
+        </div>
+    `;
+
+    modal.classList.remove('hidden');
+    if (window.lucide) window.lucide.createIcons();
+}
+
+// Setup Order Confirmation Modal Events
+function setupOrderConfirmationModal() {
+    const modal = document.getElementById('order-confirmation-modal');
+    const closeBtn = document.getElementById('close-order-modal');
+    const doneBtn = document.getElementById('order-modal-done-btn');
+
+    if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+    }
+    if (doneBtn && modal) {
+        doneBtn.addEventListener('click', () => modal.classList.add('hidden'));
+    }
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.add('hidden');
+        });
+    }
 }
 
 // Setup Dietary Filter Buttons
@@ -490,8 +653,11 @@ function setupReservation() {
                 modal.classList.remove('hidden');
             }
 
+            // Play bell sound on confirmed table booking request
+            playOrderBellSound();
+
             form.reset();
-            showToast('Table reservation request created successfully!', 'bookmark');
+            showToast('🔔 <strong>Reservation Request Confirmed!</strong> Details sent to cafe WhatsApp.', 'bookmark');
         });
     }
 
@@ -632,6 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMenuItems();
     renderCartDrawer();
     setupCartDrawer();
+    setupOrderConfirmationModal();
     setupDietaryFilters();
     setupReservation();
     renderGallery();
