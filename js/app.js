@@ -263,7 +263,13 @@ function renderCartDrawer() {
 
     container.innerHTML = cart.items.map(item => `
         <div class="flex items-center gap-3 p-3 bg-[#24170e] rounded-xl border border-[#3e2617]">
-            <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-lg object-cover flex-shrink-0" />
+            <img 
+                src="${item.image}" 
+                alt="${item.name}" 
+                class="w-14 h-14 rounded-lg object-cover flex-shrink-0"
+                loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80'"
+            />
             <div class="flex-grow min-w-0">
                 <div class="flex items-center gap-1.5">
                     <span class="diet-indicator ${item.isVeg ? 'diet-veg' : 'diet-nonveg'} scale-75"></span>

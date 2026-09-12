@@ -46,7 +46,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Rich melted Belgian dark chocolate slow-steamed with whole milk and topped with toasted mini marshmallows.",
-        image: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ea?auto=format&fit=crop&w=600&q=80",
+        image: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=600&q=80",
         tags: ["Signature", "Cozy Favorite"]
     },
     {
@@ -90,7 +90,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Freshly pulled espresso poured over vanilla-steamed milk and drizzled with buttery salted caramel.",
-        image: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/c5_salted_caramel_macchiato.jpg",
         tags: ["Sweet & Bold"]
     },
     {
@@ -101,7 +101,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "18-hour slow cold brewed single-origin Chikmagalur beans served over crystal ice rocks.",
-        image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/c6_iced_cold_brew.jpg",
         tags: ["18-hr Brew", "Chilled"]
     },
 
@@ -125,7 +125,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Caramelized Lotus Biscoff spread blended thick with vanilla cream and topped with crushed biscuits.",
-        image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/s2_lotus_biscoff_crumble_shake.jpg",
         tags: ["Trending", "Caramel"]
     },
     {
@@ -136,7 +136,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Roasted peanut butter, unsweetened dark cocoa, banana, oat milk, and chia seeds for wholesome energy.",
-        image: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/s3_pb_coco_protein_smoothie.jpg",
         tags: ["Healthy Pick"]
     },
     {
@@ -147,7 +147,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Vibrant curacao citrus syrup shaken with sparkling soda, fresh mint sprigs, and lemon zest.",
-        image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/s4_electric_blue_lagoon_mocktail.jpg",
         tags: ["Refreshing"]
     },
     {
@@ -215,7 +215,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Panko-crusted cottage cheese fingers marinated in smoked paprika served with chipotle dip.",
-        image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b5_crispy_paneer_poppers.jpg",
         tags: ["Crunchy"]
     },
     {
@@ -272,7 +272,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Fettuccine tossed in the beloved balance of rich parmesan Alfredo and tangy basil Arrabbiata, with garden vegetables.",
-        image: "https://images.unsplash.com/photo-1621996346565-e3adc644d952?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p4_creamy_pink_sauce_fettuccine.jpg",
         tags: ["Patron Favorite"]
     },
     {
@@ -283,7 +283,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Penne coated in a velvety roasted sweet bell pepper puree, garlic, kalamata olives, finished with Italian white truffle oil.",
-        image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p5_pasta_peperonata_truffle.jpg",
         tags: ["Truffle Scent"]
     },
     {
@@ -294,7 +294,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: false,
         description: "Herb-marinated tender chicken breast slivers tossed with penne in fragrant Genovese basil pine-nut pesto.",
-        image: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p6_grilled_chicken_pesto_penne.jpg",
         tags: ["Non-Veg"]
     },
 
@@ -307,7 +307,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Spiced crispy paneer patty, shredded iceberg lettuce, sliced gherkins, and house smoked tandoori spread on a brioche bun.",
-        image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg1_classic_paneer_crunch_burger.jpg",
         tags: ["Bestseller"]
     },
     {
@@ -318,7 +318,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Succulent grilled chicken patty topped with melted cheddar, jalapeno salsa, nachos crunch, and spicy chipotle.",
-        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg2_fiery_chicken_mexican_burger.jpg",
         tags: ["Non-Veg", "Fiery"]
     },
     {
@@ -364,7 +364,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Flat rice noodles stir-fried with tamarind sauce, crunchy bean sprouts, tofu, scallions, and crushed roasted peanuts.",
-        image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab2_bangkok_street_pad_thai.jpg",
         tags: ["Street Flavor"]
     },
     {
@@ -375,7 +375,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Grilled marinated paneer steak served on a smoking iron skillet with herbed butter rice, buttered greens, and pepper sauce.",
-        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab3_cottage_cheese_steak_sizzler.jpg",
         tags: ["Sizzling Skillet"]
     },
     {
@@ -480,7 +480,7 @@ export const GALLERY_IMAGES = [
     {
         title: "Burrata & Pesto Wood-fired Style Pizza",
         category: "Food",
-        url: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80"
+        url: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
     },
     {
         title: "Board Game Nights & Acoustic Evenings",
