@@ -48,13 +48,13 @@ function renderCategories() {
         return `
             <button 
                 data-category="${cat.id}"
-                class="category-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium transition-all flex items-center gap-2 border ${
+                class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 border ${
                     isActive 
-                        ? 'bg-amber-600 text-white border-amber-500 shadow-lg shadow-amber-900/40' 
-                        : 'bg-[#23170e] text-[#d6c7b2] border-[#42291a] hover:border-amber-700/60 hover:text-white'
+                        ? 'bg-amber-600 text-white border-amber-500 shadow-sm' 
+                        : 'bg-white text-[#4a3525] border-[#d8c8b6] hover:border-amber-600 hover:text-amber-800 shadow-2xs'
                 }"
             >
-                <i data-lucide="${cat.icon}" class="w-4 h-4"></i>
+                <i data-lucide="${cat.icon}" class="w-3.5 h-3.5"></i>
                 <span>${cat.name}</span>
             </button>
         `;
@@ -115,8 +115,8 @@ function renderMenuItems() {
         const qtyInCart = cartItem ? cartItem.quantity : 0;
 
         return `
-            <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group">
-                <div class="relative h-52 overflow-hidden bg-[#1f130b]">
+            <div class="light-card rounded-2xl overflow-hidden flex flex-col justify-between group border border-[#e4d8c9] bg-white shadow-sm hover:shadow-xl hover:border-amber-500/50 transition-all duration-300">
+                <div class="relative h-52 overflow-hidden bg-[#faf6f0]">
                     <img 
                         src="${item.image}" 
                         alt="${item.name}" 
@@ -124,12 +124,12 @@ function renderMenuItems() {
                         loading="lazy"
                         onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80'"
                     />
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#1b1008] via-transparent to-black/30"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                     
                     <!-- Diet badge -->
-                    <div class="absolute top-3 left-3 flex items-center gap-2 bg-[#1b1008]/85 backdrop-blur-md px-2.5 py-1 rounded-md border border-amber-900/40">
+                    <div class="absolute top-3 left-3 flex items-center gap-2 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md border border-[#e2d5c3] shadow-2xs">
                         <span class="diet-indicator ${item.isVeg ? 'diet-veg' : 'diet-nonveg'}"></span>
-                        <span class="text-[11px] font-semibold tracking-wide uppercase ${item.isVeg ? 'text-emerald-400' : 'text-rose-400'}">
+                        <span class="text-[11px] font-bold tracking-wide uppercase ${item.isVeg ? 'text-emerald-700' : 'text-rose-700'}">
                             ${item.isVeg ? 'Veg' : 'Non-Veg'}
                         </span>
                     </div>
@@ -149,33 +149,33 @@ function renderMenuItems() {
                     </div>
                 </div>
 
-                <div class="p-5 flex flex-col flex-grow justify-between">
+                <div class="p-5 flex flex-col flex-grow justify-between bg-white">
                     <div>
                         <div class="flex items-start justify-between gap-2 mb-1.5">
-                            <h3 class="font-serif-title text-xl font-bold text-[#fcf9f2] group-hover:text-amber-400 transition-colors leading-snug">
+                            <h3 class="font-serif-title text-xl font-bold text-[#1f130b] group-hover:text-amber-700 transition-colors leading-snug">
                                 ${item.name}
                             </h3>
                         </div>
-                        <p class="text-sm text-[#b8a692] line-clamp-2 leading-relaxed mb-4">
+                        <p class="text-sm text-[#5c4a3d] line-clamp-2 leading-relaxed mb-4">
                             ${item.description}
                         </p>
                         <div class="flex flex-wrap gap-1.5 mb-4">
                             ${item.tags.map(t => `
-                                <span class="text-[10px] uppercase font-semibold tracking-wider bg-[#2e1d13] text-[#dfc3a3] px-2 py-0.5 rounded border border-[#4d3020]">
+                                <span class="text-[10px] uppercase font-bold tracking-wider bg-[#f6eee3] text-[#78350f] px-2 py-0.5 rounded border border-[#e8dac8]">
                                     ${t}
                                 </span>
                             `).join('')}
                         </div>
                     </div>
 
-                    <div class="pt-3 border-t border-[#3b2416] flex items-center justify-between">
+                    <div class="pt-3 border-t border-[#f0e4d4] flex items-center justify-between">
                         ${qtyInCart > 0 ? `
-                            <div class="flex items-center gap-2 bg-[#2b190f] border border-amber-700/60 rounded-xl px-2 py-1">
-                                <button data-action="dec" data-id="${item.id}" class="qty-btn w-7 h-7 flex items-center justify-center rounded-lg bg-amber-900/60 text-amber-300 hover:bg-amber-800 transition">
+                            <div class="flex items-center gap-2 bg-[#fcf9f5] border border-amber-600/40 rounded-xl px-2 py-1">
+                                <button data-action="dec" data-id="${item.id}" class="qty-btn w-7 h-7 flex items-center justify-center rounded-lg bg-amber-100 text-amber-900 hover:bg-amber-200 transition">
                                     <i data-lucide="minus" class="w-3.5 h-3.5"></i>
                                 </button>
-                                <span class="font-bold text-amber-200 px-2 text-sm">${qtyInCart} in tray</span>
-                                <button data-action="inc" data-id="${item.id}" class="qty-btn w-7 h-7 flex items-center justify-center rounded-lg bg-amber-600 text-black hover:bg-amber-500 transition">
+                                <span class="font-bold text-amber-950 px-2 text-sm">${qtyInCart} in tray</span>
+                                <button data-action="inc" data-id="${item.id}" class="qty-btn w-7 h-7 flex items-center justify-center rounded-lg bg-amber-600 text-white hover:bg-amber-500 transition">
                                     <i data-lucide="plus" class="w-3.5 h-3.5"></i>
                                 </button>
                             </div>
@@ -381,10 +381,10 @@ function setupDietaryFilters() {
         btn.addEventListener('click', () => {
             filterButtons.forEach(b => {
                 b.classList.remove('bg-amber-600', 'text-white', 'border-amber-500');
-                b.classList.add('bg-[#23170e]', 'text-[#d6c7b2]', 'border-[#42291a]');
+                b.classList.add('bg-white', 'text-[#452b1b]', 'border-[#d8c8b6]');
             });
             btn.classList.add('bg-amber-600', 'text-white', 'border-amber-500');
-            btn.classList.remove('bg-[#23170e]', 'text-[#d6c7b2]', 'border-[#42291a]');
+            btn.classList.remove('bg-white', 'text-[#452b1b]', 'border-[#d8c8b6]');
 
             state.activeDietFilter = btn.dataset.filter;
             renderMenuItems();
@@ -524,20 +524,20 @@ function renderTestimonials() {
     if (!container) return;
 
     container.innerHTML = TESTIMONIALS.map(t => `
-        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between">
+        <div class="light-card p-6 rounded-2xl flex flex-col justify-between border border-[#e4d8c9] bg-white shadow-sm hover:shadow-md transition">
             <div>
-                <div class="flex items-center gap-1 text-amber-400 mb-4">
-                    ${Array(t.rating).fill(0).map(() => `<i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>`).join('')}
+                <div class="flex items-center gap-1 text-amber-500 mb-4">
+                    ${Array(t.rating).fill(0).map(() => `<i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>`).join('')}
                 </div>
-                <p class="text-neutral-300 italic text-sm leading-relaxed mb-6">
+                <p class="text-[#4a392c] italic text-sm leading-relaxed mb-6">
                     "${t.text}"
                 </p>
             </div>
-            <div class="flex items-center gap-3 pt-4 border-t border-amber-900/30">
+            <div class="flex items-center gap-3 pt-4 border-t border-[#f0e4d4]">
                 <img src="${t.avatar}" alt="${t.author}" class="w-11 h-11 rounded-full object-cover border-2 border-amber-600/60" />
                 <div>
-                    <h5 class="font-bold text-sm text-neutral-100">${t.author}</h5>
-                    <p class="text-xs text-amber-400/80">${t.role}</p>
+                    <h5 class="font-bold text-sm text-[#1f130b]">${t.author}</h5>
+                    <p class="text-xs text-amber-800 font-semibold">${t.role}</p>
                 </div>
             </div>
         </div>
