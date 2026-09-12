@@ -1,8 +1,5 @@
 # 📖 The Bookmark Cafe Website (Kalyan West)
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-bookmarks--cafe.onrender.com-brightgreen?style=for-the-badge&logo=render)](https://bookmarks-cafe.onrender.com)
-[![GitHub stars](https://img.shields.io/badge/Status-Live%20Online-success?style=for-the-badge)](https://bookmarks-cafe.onrender.com)
-
 > ### 🌐 **Live Website Link:**  
 > 👉 **[https://bookmarks-cafe.onrender.com](https://bookmarks-cafe.onrender.com)**
 
