@@ -142,17 +142,18 @@ function renderMenuItems() {
 
     if (emptyState) emptyState.classList.add('hidden');
 
-    container.innerHTML = customJainCardHtml + items.map(item => {
+    container.innerHTML = customJainCardHtml + items.map((item, index) => {
         const cartItem = cart.items.find(i => i.id === item.id);
         const qtyInCart = cartItem ? cartItem.quantity : 0;
+        const delayClass = `delay-${Math.min((index % 6) * 80, 400)}`;
 
         return `
-            <div class="light-card rounded-2xl overflow-hidden flex flex-col justify-between group border border-[#e4d8c9] bg-white shadow-sm hover:shadow-xl hover:border-amber-500/50 transition-all duration-300">
+            <div class="light-card rounded-2xl overflow-hidden flex flex-col justify-between group border border-[#e4d8c9] bg-white shadow-sm hover:shadow-xl hover:border-amber-500/50 transition-all duration-300 reveal ${delayClass}">
                 <div class="relative h-52 overflow-hidden bg-[#faf6f0]">
                     <img 
                         src="${item.image}" 
                         alt="${item.name}" 
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                         onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80'"
                     />
@@ -169,7 +170,7 @@ function renderMenuItems() {
                     <!-- Bestseller / tags -->
                     <div class="absolute top-3 right-3 flex flex-col items-end gap-1.5">
                         ${item.isBestseller ? `
-                            <span class="bg-gradient-to-r from-amber-500 to-amber-600 text-black text-[11px] font-extrabold px-2.5 py-0.5 rounded-full shadow-md flex items-center gap-1">
+                            <span class="shimmer-badge text-black text-[11px] font-extrabold px-2.5 py-0.5 rounded-full shadow-md flex items-center gap-1 border border-amber-500/40">
                                 <i data-lucide="star" class="w-3 h-3 fill-black"></i> Bestseller
                             </span>
                         ` : ''}
@@ -215,7 +216,7 @@ function renderMenuItems() {
                             <button 
                                 data-action="add" 
                                 data-id="${item.id}" 
-                                class="add-to-tray-btn w-full btn-amber-glow text-black font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 text-sm shadow-md"
+                                class="add-to-tray-btn w-full btn-amber-glow text-black font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 text-sm shadow-md hover:scale-[1.02] transition-transform"
                             >
                                 <i data-lucide="bookmark-plus" class="w-4 h-4"></i>
                                 <span>Add to Taste Tray</span>
@@ -256,6 +257,7 @@ function renderMenuItems() {
     });
 
     if (window.lucide) window.lucide.createIcons();
+    setupScrollAnimations();
 }
 
 // Render Taste Tray Drawer
@@ -274,6 +276,9 @@ function renderCartDrawer() {
         badge.textContent = totalCount;
         if (totalCount > 0) {
             badge.classList.remove('hidden');
+            badge.classList.remove('badge-pop');
+            void badge.offsetWidth;
+            badge.classList.add('badge-pop');
         } else {
             badge.classList.add('hidden');
         }
@@ -724,8 +729,8 @@ function renderGallery() {
     const container = document.getElementById('gallery-grid');
     if (!container) return;
 
-    container.innerHTML = GALLERY_IMAGES.map(img => `
-        <div class="group relative rounded-2xl overflow-hidden h-64 bg-[#1f130b] border border-amber-900/30">
+    container.innerHTML = GALLERY_IMAGES.map((img, index) => `
+        <div class="group relative rounded-2xl overflow-hidden h-64 bg-[#1f130b] border border-amber-900/30 reveal delay-${((index % 3) + 1) * 100}">
             <img 
                 src="${img.url}" 
                 alt="${img.title}" 
@@ -751,8 +756,8 @@ function renderTestimonials() {
     const container = document.getElementById('testimonials-container');
     if (!container) return;
 
-    container.innerHTML = TESTIMONIALS.map(t => `
-        <div class="light-card p-6 rounded-2xl flex flex-col justify-between border border-[#e4d8c9] bg-white shadow-sm hover:shadow-md transition">
+    container.innerHTML = TESTIMONIALS.map((t, index) => `
+        <div class="light-card p-6 rounded-2xl flex flex-col justify-between border border-[#e4d8c9] bg-white shadow-sm hover:shadow-xl transition-all duration-300 reveal delay-${((index % 4) + 1) * 100}">
             <div>
                 <div class="flex items-center gap-1 text-amber-500 mb-4">
                     ${Array(t.rating).fill(0).map(() => `<i data-lucide="star" class="w-4 h-4 fill-amber-400 text-amber-400"></i>`).join('')}
@@ -835,6 +840,84 @@ function setupMobileNav() {
     mobileLinks.forEach(l => l.addEventListener('click', () => toggleMobile(false)));
 }
 
+// Setup Scroll Reveal Animations Observer
+export function setupScrollAnimations() {
+    const reveals = document.querySelectorAll('.reveal:not(.revealed), .reveal-left:not(.revealed), .reveal-right:not(.revealed), .reveal-zoom:not(.revealed)');
+    if (!reveals.length) return;
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -25px 0px'
+        });
+
+        reveals.forEach(el => observer.observe(el));
+    } else {
+        reveals.forEach(el => el.classList.add('revealed'));
+    }
+}
+
+// Setup Animated Number Counters
+export function setupCounterAnimations() {
+    const counters = document.querySelectorAll('.counter-stat');
+    if (!counters.length) return;
+
+    const animateCount = (el) => {
+        if (el.dataset.animated === 'true') return;
+        el.dataset.animated = 'true';
+
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        const duration = 1600;
+        const startTime = performance.now();
+
+        const update = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Smooth ease out cubic
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const currentVal = target * easeOut;
+
+            if (decimals > 0) {
+                el.textContent = currentVal.toFixed(decimals) + suffix;
+            } else if (target >= 1000) {
+                el.textContent = Math.round(currentVal).toLocaleString('en-IN') + suffix;
+            } else {
+                el.textContent = Math.round(currentVal) + suffix;
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        };
+
+        requestAnimationFrame(update);
+    };
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCount(entry.target);
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.25 });
+
+        counters.forEach(el => observer.observe(el));
+    } else {
+        counters.forEach(animateCount);
+    }
+}
+
 // Initialize Entire App
 document.addEventListener('DOMContentLoaded', () => {
     renderCategories();
@@ -849,6 +932,8 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTestimonials();
     renderFaqs();
     setupMobileNav();
+    setupScrollAnimations();
+    setupCounterAnimations();
 
     if (window.lucide) {
         window.lucide.createIcons();
