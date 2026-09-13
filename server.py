@@ -24,7 +24,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 def main():
     os.chdir(DIRECTORY)
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    with http.server.ThreadingHTTPServer(("", PORT), Handler) as httpd:
         url = f"http://localhost:{PORT}"
         print("=" * 60)
         print("  THE BOOKMARK CAFE - Local Website Server")

@@ -49,7 +49,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Rich melted Belgian dark chocolate slow-steamed with whole milk and topped with toasted mini marshmallows.",
-        image: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/c1_belgian_dark_hot_chocolate.jpg",
         tags: ["Signature", "Cozy Favorite"]
     },
     {
@@ -60,7 +60,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Decadent melted cocoa infused with roasted Italian hazelnut praline and whipped cream.",
-        image: "https://images.unsplash.com/photo-1517578239113-b03992dcdd25?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/c2_hazelnut_hot_chocolate.jpg",
         tags: ["Must Try", "Nutty"]
     },
     {
@@ -71,7 +71,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Equal parts double ristretto specialty roast and silky textured warm micro-foam.",
-        image: "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/c3_spanish_cortado.jpg",
         tags: ["Arabica Roast"]
     },
     {
@@ -82,7 +82,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Freshly pulled espresso poured over vanilla-steamed milk and drizzled with buttery salted caramel.",
-        image: "images/menu/c5_salted_caramel_macchiato.jpg",
+        image: "images/menu/c4_salted_caramel_macchiato.jpg",
         tags: ["Sweet & Bold"]
     },
     {
@@ -93,7 +93,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "18-hour slow cold brewed single-origin Chikmagalur beans served over crystal ice rocks.",
-        image: "images/menu/c6_iced_cold_brew.jpg",
+        image: "images/menu/c5_iced_cold_brew.jpg",
         tags: ["18-hr Brew", "Chilled"]
     },
     {
@@ -104,7 +104,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Velvety dark chocolate paired with tart wild raspberry coulis. The perfect book companion.",
-        image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/c6_raspberry_dark_hot_cocoa.jpg",
         tags: ["Chef Special"]
     },
 
@@ -119,7 +119,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Thick chocolate ice cream blended with chunky fudge brownie bits, topped with whipped cream and chocolate cigar.",
-        image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/s1_fudge_brownie_shake.jpg",
         tags: ["Indulgent", "Bestseller"]
     },
     {
@@ -163,7 +163,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Hand-shaken Assam black tea steeped with wild strawberries, muddled sweet basil, and citrus juice.",
-        image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/s5_smoked_berry_basil_iced_tea.jpg",
         tags: ["Crisp & Fruity"]
     },
 
@@ -178,7 +178,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Golden crispy salted potato fries, hot and perfectly seasoned.",
-        image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b1_salted_french_fries.jpg",
         tags: ["Classic", "Quick Bite"]
     },
     {
@@ -189,7 +189,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Crisp golden fries tossed in fiery peri-peri seasoning and drenched in velvety warm melted cheese sauce.",
-        image: "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b2_peri_peri_cheese_fries.jpg",
         tags: ["Spicy Crunch", "Bestseller"]
     },
     {
@@ -200,7 +200,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Chef's signature loaded crispy fries topped with house secret sauces, melted cheese and aromatic Italian herbs.",
-        image: "https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b3_bookmark_special_fries.jpg",
         tags: ["Chef Special", "Loaded"]
     },
     {
@@ -211,7 +211,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Crispy toasted garlic bread topped with generous melted cheese and aromatic Italian herbs.",
-        image: "https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b4_cheese_garlic_bread.jpg",
         tags: ["Cheesy", "Must Try"]
     },
     {
@@ -222,7 +222,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Crispy skin-on potato wedges tossed in house spices, served with seasoned creamy dip.",
-        image: "https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b5_potato_wedges.jpg",
         tags: ["Crispy", "Snack"]
     },
     {
@@ -233,7 +233,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "American sweet corn and boiled potato grated with cheese, coated with bread crumbs, fried golden and served with chipotle sauce.",
-        image: "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b6_corn_cheese_balls.jpg",
         tags: ["Crispy", "Popular"]
     },
     {
@@ -244,7 +244,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Jalapeno peppers stuffed with a rich blend of cream cheese and Cheddar cheese, fried to crispy golden perfection.",
-        image: "images/menu/b5_crispy_paneer_poppers.jpg",
+        image: "images/menu/b7_jalapeno_poppers.jpg",
         tags: ["Spicy & Cheesy"]
     },
     {
@@ -255,7 +255,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Corn tortilla nachos loaded with exotic veggies and melted cheese, served with fresh salsa and sour cream.",
-        image: "https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b8_overloaded_nachos.jpg",
         tags: ["Sharing", "Cheesy Delight"]
     },
     {
@@ -266,7 +266,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Desi Pav Bhaji in videshi style served bubbling fondue-style with buttery toasted herb crouton skewers.",
-        image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b9_pav_bhaji_fondue.jpg",
         tags: ["Signature", "Desi Videshi"]
     },
     {
@@ -277,7 +277,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Quesadilla combination of pesto cheese and diced tomatoes, served with salsa and sour cream.",
-        image: "https://images.unsplash.com/photo-1618040996337-56904b7850b9?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b10_tomato_pesto_quesadilla.jpg",
         tags: ["Pesto Flavor"]
     },
     {
@@ -288,7 +288,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Fresh cottage cheese cubes marinated in spiced tandoori masala and charred in clay tandoor, served with green chutney.",
-        image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b11_paneer_tikka.jpg",
         tags: ["Tandoor", "Smoky"]
     },
     {
@@ -299,7 +299,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "House-made crispy chicken nuggets tossed in an exotic blend of Mexican peri-peri and in-house spices, served with peri-peri dip.",
-        image: "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b12_chicken_nuggets.jpg",
         tags: ["Non-Veg", "Crispy Bite"]
     },
     {
@@ -310,7 +310,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Juicy crispy wings tossed in choice of BBQ, Schezwan, or Peri-Peri glaze.",
-        image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b13_chicken_wings.jpg",
         tags: ["Non-Veg", "Juicy & Spiced"]
     },
     {
@@ -321,7 +321,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Boneless chicken chunks marinated in authentic spiced yogurt, roasted in clay tandoor with onions and bell peppers.",
-        image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b14_tandoori_chicken_tikka.jpg",
         tags: ["Non-Veg", "Tandoor Star"]
     },
     {
@@ -332,7 +332,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: false,
         description: "Flavor-packed BBQ chicken skewers marinated in a spicy pepper, garlic, lemon, basil and oregano sauce.",
-        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b15_peri_peri_chicken_skewers.jpg",
         tags: ["Non-Veg", "Fiery Skewer"]
     },
     {
@@ -343,7 +343,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: false,
         description: "Made with grilled fish battered cod, served in crispy corn tortillas with crunchy slaw and house sauce.",
-        image: "https://images.unsplash.com/photo-1512838243191-0b1058732a2f?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b16_fish_tacos.jpg",
         tags: ["Non-Veg", "Seafood"]
     },
     {
@@ -354,7 +354,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Succulent prawns tossed in rich aromatic buttery garlic sauce, chilli flakes, and fresh parsley.",
-        image: "https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/b17_butter_garlic_prawns.jpg",
         tags: ["Non-Veg", "Chef Special"]
     },
 
@@ -369,7 +369,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Classic Italian thin crust topped with slices of tomatoes, mozzarella cheese, and fresh fragrant basil leaves.",
-        image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p1_margarita_pizza.jpg",
         tags: ["Classic", "Neapolitan"]
     },
     {
@@ -380,7 +380,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Tandoori cottage cheese cubes with aromatic tikka masala, sliced red onion, crisp capsicum, and bubbling mozzarella.",
-        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p2_paneer_tikka_pizza.jpg",
         tags: ["Desi Fusion", "Popular"]
     },
     {
@@ -391,7 +391,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Charred tandoori chicken tikka chunks, spiced tomato base, crunchy capsicum, red onions, and melted mozzarella.",
-        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p3_chicken_tikka_pizza.jpg",
         tags: ["Non-Veg", "Chef Pick"]
     },
     {
@@ -402,7 +402,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Gourmet combination of four cheeses: mozzarella, yellow cheddar, parmesan, and feta baked to golden bubbly crust.",
-        image: "https://images.unsplash.com/photo-1573821663912-569905455b1c?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p4_4_cheese_pizza.jpg",
         tags: ["Quattro Formaggi", "Extra Cheesy"]
     },
     {
@@ -413,7 +413,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: false,
         description: "Tender chicken tossed in smoky BBQ sauce, red onion, green chillies, black olives, and mozzarella cheese.",
-        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p5_bbq_chicken_pizza.jpg",
         tags: ["Non-Veg", "Smoky BBQ"]
     },
     {
@@ -424,7 +424,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Quattro stagioni pizza crafted with four signature sauces across four sections: peri-peri, basil pesto, cheese, and tikka masala.",
-        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p6_bookmark_special_pizza.jpg",
         tags: ["Signature", "4-in-1"]
     },
     {
@@ -435,7 +435,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Harmonious combination of spicy tomato arrabbiata and velvety cream sauce tossed with penne pasta and exotic veggies.",
-        image: "images/menu/p4_creamy_pink_sauce_fettuccine.jpg",
+        image: "images/menu/p7_creamy_pink_sauce_pasta.jpg",
         tags: ["Patron Favorite", "Creamy & Tangy"]
     },
     {
@@ -446,7 +446,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Penne pasta and exotic veggies combined with rich butter, cream, garlic, and parmesan white sauce.",
-        image: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p8_alfredo_sauce_pasta.jpg",
         tags: ["White Sauce", "Cheesy"]
     },
     {
@@ -457,7 +457,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Tender chicken strips and penne tossed with sautéed garlic, mushrooms, cream, and parmesan sauce.",
-        image: "images/menu/p6_grilled_chicken_pesto_penne.jpg",
+        image: "images/menu/p9_chicken_alfredo_pasta.jpg",
         tags: ["Non-Veg", "Rich White Sauce"]
     },
     {
@@ -468,7 +468,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Red sauce pasta made from garlic, ripe tomatoes, and dried red chilly peppers cooked in olive oil, topped with cheese.",
-        image: "images/menu/p5_pasta_peperonata_truffle.jpg",
+        image: "images/menu/p10_veg_arrabbiata_pasta.jpg",
         tags: ["Spicy Tomato", "Olive Oil"]
     },
     {
@@ -479,7 +479,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Classic oven-baked macaroni and cheese spiced with Mexican chilli, pickled jalapenos, and sweet golden corn.",
-        image: "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p11_jalapeno_corn_mac_and_cheese.jpg",
         tags: ["Baked", "Comfort Food"]
     },
     {
@@ -490,7 +490,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Creamy sundried tomato pesto sauce tossed with al dente penne pasta, fresh basil, and extra virgin olive oil.",
-        image: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p12_penne_sundried_tomato_pesto.jpg",
         tags: ["Pesto", "Italian Herb"]
     },
     {
@@ -501,7 +501,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Baked layers of pasta sheets, seasonal garden vegetables, and mix sauce blanketed in melted mozzarella cheese.",
-        image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p13_veg_lasagne.jpg",
         tags: ["Oven Baked", "Layered"]
     },
     {
@@ -512,7 +512,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Spicy Kolhapuri spiced paneer layered between lasagna sheets with the quintessential golden Parmesan gratin.",
-        image: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p14_bookmark_special_lasagne.jpg",
         tags: ["Chef Signature", "Desi Kolhapuri"]
     },
     {
@@ -523,7 +523,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Handmade delicate ravioli filled with fresh spinach and creamy ricotta, tossed in fragrant butter garlic sauce.",
-        image: "https://images.unsplash.com/photo-1587740908075-9e245070dfaa?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/p15_spinach_ricotta_ravioli.jpg",
         tags: ["Handcrafted", "Gourmet"]
     },
 
@@ -538,7 +538,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Crispy golden potato pattie topped with crunchy veggies and cheese, served with fresh mint mayo on a toasted bun.",
-        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg1_desi_aloo_tikki_burger.jpg",
         tags: ["Desi Flavor", "Crisp Pattie"]
     },
     {
@@ -549,7 +549,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Dish made of paneer with a seasoned mixture of vegetables and spices wrapped in a soft sesame bun.",
-        image: "images/menu/bg1_classic_paneer_crunch_burger.jpg",
+        image: "images/menu/bg2_classic_paneer_burger.jpg",
         tags: ["Paneer Crunch", "Bestseller"]
     },
     {
@@ -560,7 +560,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Crisp spiced paneer patty combined with aromatic tandoori tikka masala, cheese slice, and crunchy greens.",
-        image: "images/menu/bg1_classic_paneer_crunch_burger.jpg",
+        image: "images/menu/bg3_paneer_tikka_burger.jpg",
         tags: ["Tikka Masala", "Cheesy"]
     },
     {
@@ -571,7 +571,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Mexican spiced vegetable patty served with crispy nachos and zesty homemade salsa dip.",
-        image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg4_veg_mexican_burger.jpg",
         tags: ["Mexican Spiced"]
     },
     {
@@ -582,7 +582,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Classic juicy chicken burger patty made with chef's special spiced recipe, lettuce, and mayo.",
-        image: "images/menu/bg2_fiery_chicken_mexican_burger.jpg",
+        image: "images/menu/bg5_classic_chicken_burger.jpg",
         tags: ["Non-Veg", "Classic Pick"]
     },
     {
@@ -593,7 +593,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Fusion chicken tikka burger combining authentic Indian tikka masala, seasoned chicken, and melted cheese.",
-        image: "images/menu/bg2_fiery_chicken_mexican_burger.jpg",
+        image: "images/menu/bg6_chicken_tikka_burger.jpg",
         tags: ["Non-Veg", "Fusion"]
     },
     {
@@ -604,7 +604,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: false,
         description: "Mexican chicken burger packed with spicy flavours & topped with salsa, served with crispy nachos.",
-        image: "images/menu/bg2_fiery_chicken_mexican_burger.jpg",
+        image: "images/menu/bg7_chicken_mexican_burger.jpg",
         tags: ["Non-Veg", "Spicy"]
     },
     {
@@ -615,7 +615,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Crispy chicken tossed in sweet and spicy hot chilli sauce, smothered in melted cheese on a buttered bun.",
-        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg8_honey_chilli_chicken_burger.jpg",
         tags: ["Non-Veg", "Sweet & Spicy"]
     },
     {
@@ -626,7 +626,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Chef's loaded signature double chicken patty burger layered with cheese, fresh greens, and house secret relish.",
-        image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg9_bookmark_signature_burger.jpg",
         tags: ["Non-Veg", "Chef Signature"]
     },
     {
@@ -637,7 +637,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Vegetable grilled sandwich made with a large assortment of fresh vegetables and oodles of butter.",
-        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg10_veg_grilled_sandwich.jpg",
         tags: ["Buttery", "Classic Grilled"]
     },
     {
@@ -648,7 +648,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Mumbai style spicy potato filling, cucumber, tomatoes, cheese, and spicy mint chutney toasted to crisp perfection.",
-        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg11_bombay_club_sandwich.jpg",
         tags: ["Mumbai Special", "Spicy"]
     },
     {
@@ -659,7 +659,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Filled with paneer cubes, onions, green peppers, marinated with spiced yogurt and tandoori masala.",
-        image: "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg12_paneer_tikka_sandwich.jpg",
         tags: ["Tandoori Paneer"]
     },
     {
@@ -670,7 +670,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Double layer sandwich with assorted vegetables, sliced cheese, and seasoned mayo spread.",
-        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg13_veg_club_sandwich.jpg",
         tags: ["Double Layer"]
     },
     {
@@ -681,7 +681,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Delicious and tender grilled chicken on a bed of crisp lettuce, tomato, and mayo sandwiched between toasted bread.",
-        image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg14_chicken_grilled_sandwich.jpg",
         tags: ["Non-Veg", "Grilled Chicken"]
     },
     {
@@ -692,7 +692,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: false,
         description: "Mashed chicken tikka mixed with capsicum, green chutney, and mayonnaise stuffed in buttered sandwich bread.",
-        image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg15_chicken_tikka_sandwich.jpg",
         tags: ["Non-Veg", "Spicy Tikka"]
     },
     {
@@ -703,7 +703,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Chicken club sandwich made with seasoned shredded chicken, toasted bread, fried egg, lettuce, tomatoes, mayo, and processed cheese.",
-        image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg16_chicken_club_sandwich.jpg",
         tags: ["Non-Veg", "Triple Decker"]
     },
     {
@@ -714,7 +714,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Flour tortilla rolled with seasoned garden vegetables, house dressing, and molten melted cheese.",
-        image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg17_veg_cheesy_wrap.jpg",
         tags: ["Warm Wrap", "Cheesy"]
     },
     {
@@ -725,7 +725,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Smoky tandoori chicken tikka cubes rolled in a soft paratha with melting cheese and mint chutney.",
-        image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg18_chicken_tikka_cheesy_roll.jpg",
         tags: ["Non-Veg", "Tandoor Roll"]
     },
     {
@@ -736,7 +736,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Classic Mumbai style pan-fried paratha pocket stuffed with spiced egg, minced chicken, and herbs.",
-        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/bg19_chicken_baida_roti.jpg",
         tags: ["Non-Veg", "Mumbai Classic"]
     },
 
@@ -751,7 +751,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Vegetable broth base with garlic, dried mushrooms, tomato paste, soy sauce, and sriracha with soupy noodles and fresh greens.",
-        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab1_veg_ramen.jpg",
         tags: ["Japanese Broth", "Comfort Bowl"]
     },
     {
@@ -762,7 +762,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Rich chicken broth with garlic, mushrooms, soy and sriracha sauce, tender sliced chicken, and savory soupy noodles.",
-        image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab2_chicken_ramen.jpg",
         tags: ["Non-Veg", "Aromatic Ramen"]
     },
     {
@@ -773,7 +773,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Fragrant rice layered with exotic oriental vegetables and rich savory wok-tossed garlic gravy.",
-        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab3_oriental_pot_rice_veg.jpg",
         tags: ["Pot Rice", "Bestseller"]
     },
     {
@@ -784,7 +784,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Aromatic pot rice layered with tender diced chicken and garden vegetables in a sizzling oriental gravy.",
-        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab4_oriental_pot_rice_chicken.jpg",
         tags: ["Non-Veg", "Oriental Gravy"]
     },
     {
@@ -795,7 +795,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Authentic aromatic Thai coconut curry packed with crisp baby corn, mushrooms, and zucchini, served with steamed rice.",
-        image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab5_thai_curry_veg.jpg",
         tags: ["Thai Curry", "Coconut Milk"]
     },
     {
@@ -806,7 +806,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: false,
         description: "Classic aromatic Thai coconut curry simmered with tender chicken pieces and bamboo shoots, served with steamed rice.",
-        image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab6_thai_curry_chicken.jpg",
         tags: ["Non-Veg", "Thai Flavors"]
     },
     {
@@ -817,7 +817,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Crispy paneer cubes tossed with crunchy bell peppers, spring onions, and spicy Indo-Chinese chilli soy sauce.",
-        image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab7_classic_paneer_chilly.jpg",
         tags: ["Indo-Chinese", "Spicy"]
     },
     {
@@ -828,7 +828,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Crispy chicken bites tossed with fresh capsicum, garlic, scallions, and dark soy chilli glaze.",
-        image: "https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab8_classic_chicken_chilly.jpg",
         tags: ["Non-Veg", "Hot & Tangy"]
     },
     {
@@ -839,7 +839,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Sizzling paneer steak and capsicum served on a smoking iron skillet with herbed rice, French fries, and pepper sauce.",
-        image: "images/menu/ab3_cottage_cheese_steak_sizzler.jpg",
+        image: "images/menu/ab9_cottage_cheese_sizzler.jpg",
         tags: ["Smoking Skillet", "Paneer Sizzler"]
     },
     {
@@ -850,7 +850,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Sizzling platter featuring penne pasta, cheese garlic bread, crispy veg cutlet, French fries, and buttered vegetables.",
-        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab10_italian_sizzler_veg.jpg",
         tags: ["Italian Feast", "Sizzling"]
     },
     {
@@ -861,7 +861,7 @@ export const MENU_ITEMS = [
         isVeg: false,
         isBestseller: true,
         description: "Grilled chicken breast smothered in fiery peri-peri sauce, served on an iron sizzler plate with spicy rice, fries, and buttered corn.",
-        image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/ab11_peri_peri_chicken_sizzler.jpg",
         tags: ["Non-Veg", "Grand Sizzler"]
     },
     {
@@ -872,7 +872,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Stir-fried noodles or rice with paneer chilly and vegetable Manchurian balls served sizzling hot.",
-        image: "images/menu/ab2_bangkok_street_pad_thai.jpg",
+        image: "images/menu/ab12_oriental_paneer_sizzler.jpg",
         tags: ["Wok Sizzler"]
     },
 
@@ -887,7 +887,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Warm, soft melt-in-the-mouth mawa dumplings soaked in cardamom rose scented sugar syrup (2 pcs).",
-        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/d1_gulab_jamun.jpg",
         tags: ["Desi Sweet", "Warm"]
     },
     {
@@ -898,7 +898,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: false,
         description: "Freshly baked layered artisanal pastry with velvety frosting and premium chocolate shavings.",
-        image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/d2_pastry_of_the_day.jpg",
         tags: ["Fresh Bake"]
     },
     {
@@ -909,7 +909,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Warm, dense and fudgy dark chocolate brownie baked fresh in the cafe oven.",
-        image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/d3_chocolate_brownie.jpg",
         tags: ["Fudge Brownie", "Choco Lover"]
     },
     {
@@ -920,7 +920,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Fluffy golden pancake stack drizzled generously with warm Nutella chocolate or honey, topped with whipped cream.",
-        image: "https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/d4_fluffy_pancakes.jpg",
         tags: ["Sweet Stack", "Whipped Cream"]
     },
     {
@@ -931,7 +931,7 @@ export const MENU_ITEMS = [
         isVeg: true,
         isBestseller: true,
         description: "Warm decadent fudge brownie served sizzling on a cast-iron skillet, crowned with creamy vanilla ice cream and hot chocolate fudge drizzle.",
-        image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+        image: "images/menu/d5_sizzling_brownie_ice_cream.jpg",
         tags: ["Legendary", "Sizzling Hot"]
     }
 ];
