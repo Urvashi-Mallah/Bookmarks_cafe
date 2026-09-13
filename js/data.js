@@ -10,6 +10,8 @@ export const CAFE_INFO = {
     phone: "+91 8421190965",
     rawPhone: "918421190965",
     whatsappNumber: "918421190965",
+    whatsappInquiryMessage: `*✨ Hello The Bookmark Cafe! ✨*\n📍 Kalyan West | Customer Inquiry\n───────────────────\nHello! I am reaching out from your official website. I'd like to inquire about your menu specials, table seating, and visit today! 📖☕`,
+    whatsappInquiryUrl: "https://wa.me/918421190965?text=*✨%20Hello%20The%20Bookmark%20Cafe!%20✨*%0A📍%20Kalyan%20West%20%7C%20Customer%20Inquiry%0A───────────────────%0AHello!%20I%20am%20reaching%20out%20from%20your%20official%20website.%20I'd%20like%20to%20inquire%20about%20your%20menu%20specials,%20table%20seating,%20and%20visit%20today!%20📖☕",
     instagram: "@thebookmarkcafe_",
     instagramUrl: "https://instagram.com/thebookmarkcafe_",
     hours: "11:30 AM – 11:00 PM (Everyday)",
