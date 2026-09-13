@@ -12,6 +12,8 @@ export const CAFE_INFO = {
     whatsappNumber: "918421190965",
     whatsappInquiryMessage: `✨ *Hello The Bookmark Cafe!* ✨\n📍 Kalyan West | Customer Inquiry\n───────────────────\nHello! I am reaching out from your official website. I'd like to inquire about your menu specials, table seating, and visit today! 📖☕`,
     whatsappInquiryUrl: "https://api.whatsapp.com/send?phone=918421190965&text=%E2%9C%A8%20%2AHello%20The%20Bookmark%20Cafe%21%2A%20%E2%9C%A8%0A%F0%9F%93%8D%20Kalyan%20West%20%7C%20Customer%20Inquiry%0A%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%0AHello%21%20I%20am%20reaching%20out%20from%20your%20official%20website.%20I%27d%20like%20to%20inquire%20about%20your%20menu%20specials%2C%20table%20seating%2C%20and%20visit%20today%21%20%F0%9F%93%96%E2%98%95",
+    whatsappJainInquiryMessage: `✨ *Custom Dish & Jain Inquiry - The Bookmark Cafe* ✨\n📍 Kalyan West | Dietary & Custom Request\n───────────────────\n🌿 *Preference:* Jain-Friendly / Custom Dish Preparation\nHello! I am reaching out from your official website. I would like to request Jain-friendly preparations (no onion, no garlic) or custom dishes for an upcoming visit.\n\nPlease let me know which menu specialties can be customized for our group. Thank you! 📖☕`,
+    whatsappJainInquiryUrl: "https://api.whatsapp.com/send?phone=918421190965&text=%E2%9C%A8%20%2ACustom%20Dish%20%26%20Jain%20Inquiry%20-%20The%20Bookmark%20Cafe%2A%20%E2%9C%A8%0A%F0%9F%93%8D%20Kalyan%20West%20%7C%20Dietary%20%26%20Custom%20Request%0A%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%0A%F0%9F%8C%BF%20%2APreference%3A%2A%20Jain-Friendly%20/%20Custom%20Dish%20Preparation%0AHello%21%20I%20am%20reaching%20out%20from%20your%20official%20website.%20I%20would%20like%20to%20request%20Jain-friendly%20preparations%20%28no%20onion%2C%20no%20garlic%29%20or%20custom%20dishes%20for%20an%20upcoming%20visit.%0A%0APlease%20let%20me%20know%20which%20menu%20specialties%20can%20be%20customized%20for%20our%20group.%20Thank%20you%21%20%F0%9F%93%96%E2%98%95",
     instagram: "@thebookmarkcafe_",
     instagramUrl: "https://instagram.com/thebookmarkcafe_",
     hours: "11:30 AM – 11:00 PM (Everyday)",
@@ -36,7 +38,8 @@ export const MENU_CATEGORIES = [
     { id: "pizza-pasta", name: "Pizzas & Handcrafted Pastas", icon: "pizza" },
     { id: "burgers", name: "Burgers, Wraps & Sandwiches", icon: "sandwich" },
     { id: "asian-bowls", name: "Asian Bowls & Sizzlers", icon: "soup" },
-    { id: "desserts", name: "Desserts & Pancakes", icon: "cake" }
+    { id: "desserts", name: "Desserts & Pancakes", icon: "cake" },
+    { id: "jain", name: "Jain Specialties", icon: "leaf" }
 ];
 
 export const MENU_ITEMS = [

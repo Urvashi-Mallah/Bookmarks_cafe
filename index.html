@@ -349,6 +349,9 @@
                         <button data-filter="bestseller" class="diet-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition bg-white text-[#452b1b] border border-[#d8c8b6] hover:border-amber-600 flex items-center gap-1.5 shadow-2xs">
                             <i data-lucide="star" class="w-3.5 h-3.5 text-amber-500 fill-amber-500"></i> Bestsellers
                         </button>
+                        <button data-filter="jain" class="diet-filter-btn px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition bg-white text-[#452b1b] border border-[#d8c8b6] hover:border-emerald-600 flex items-center gap-1.5 shadow-2xs">
+                            <i data-lucide="leaf" class="w-3.5 h-3.5 text-emerald-600"></i> Jain Options
+                        </button>
                     </div>
                 </div>
 
@@ -373,20 +376,20 @@
                 </button>
             </div>
 
-            <!-- WhatsApp Custom Request Banner -->
-            <div class="mt-12 p-6 rounded-2xl bg-gradient-to-r from-[#24140b] via-[#331c11] to-[#24140b] border border-amber-700/40 flex flex-col sm:flex-row justify-between items-center gap-4 text-white shadow-xl">
+            <!-- WhatsApp Custom Request Banner (Displayed only when Jain category/filter is active) -->
+            <div id="jain-custom-banner" class="hidden mt-12 p-6 rounded-2xl bg-gradient-to-r from-[#24140b] via-[#331c11] to-[#24140b] border border-amber-700/40 flex flex-col sm:flex-row justify-between items-center gap-4 text-white shadow-xl">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-xl bg-emerald-600/30 text-emerald-400 flex items-center justify-center flex-shrink-0">
                         <i data-lucide="message-square-plus" class="w-6 h-6"></i>
                     </div>
                     <div>
-                        <h4 class="font-serif text-lg font-bold text-white">Have dietary preferences or custom catering?</h4>
-                        <p class="text-xs text-neutral-300">Jain-friendly preparations, party platters, and custom brews can be arranged via WhatsApp.</p>
+                        <h4 class="font-serif text-lg font-bold text-white">Have Jain dietary preferences or custom dishes?</h4>
+                        <p class="text-xs text-neutral-300">Jain-friendly preparations (no onion, no garlic), custom party platters, and specialty brews can be arranged via WhatsApp.</p>
                     </div>
                 </div>
-                <a href="https://api.whatsapp.com/send?phone=918421190965&text=%E2%9C%A8%20%2AHello%20The%20Bookmark%20Cafe%21%2A%20%E2%9C%A8%0A%F0%9F%93%8D%20Kalyan%20West%20%7C%20Customer%20Inquiry%0A%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%0AHello%21%20I%20am%20reaching%20out%20from%20your%20official%20website.%20I%27d%20like%20to%20inquire%20about%20your%20menu%20specials%2C%20table%20seating%2C%20and%20visit%20today%21%20%F0%9F%93%96%E2%98%95" target="_blank" rel="noopener" class="btn-amber-glow text-black font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl flex items-center gap-2 whitespace-nowrap shadow-lg">
+                <a href="https://api.whatsapp.com/send?phone=918421190965&text=%E2%9C%A8%20%2ACustom%20Dish%20%26%20Jain%20Inquiry%20-%20The%20Bookmark%20Cafe%2A%20%E2%9C%A8%0A%F0%9F%93%8D%20Kalyan%20West%20%7C%20Dietary%20%26%20Custom%20Request%0A%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%E2%94%80%0A%F0%9F%8C%BF%20%2APreference%3A%2A%20Jain-Friendly%20/%20Custom%20Dish%20Preparation%0AHello%21%20I%20am%20reaching%20out%20from%20your%20official%20website.%20I%20would%20like%20to%20request%20Jain-friendly%20preparations%20%28no%20onion%2C%20no%20garlic%29%20or%20custom%20dishes%20for%20an%20upcoming%20visit.%0A%0APlease%20let%20me%20know%20which%20menu%20specialties%20can%20be%20customized%20for%20our%20group.%20Thank%20you%21%20%F0%9F%93%96%E2%98%95" target="_blank" rel="noopener" class="btn-amber-glow text-black font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-xl flex items-center gap-2 whitespace-nowrap shadow-lg">
                     <svg class="w-4 h-4 inline-block" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    <span>Chat on WhatsApp</span>
+                    <span>Request Jain / Custom Menu</span>
                 </a>
             </div>
         </div>
