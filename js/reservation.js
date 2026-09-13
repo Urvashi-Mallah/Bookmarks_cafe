@@ -67,7 +67,7 @@ class ReservationManager {
         message += `───────────────────\n`;
         message += `Please confirm my table reservation. Looking forward to visiting! 📖`;
 
-        return `https://wa.me/${CAFE_INFO.whatsappNumber}?text=${encodeURIComponent(message)}`;
+        return `https://api.whatsapp.com/send?phone=${CAFE_INFO.whatsappNumber}&text=${encodeURIComponent(message)}`;
     }
 }
 

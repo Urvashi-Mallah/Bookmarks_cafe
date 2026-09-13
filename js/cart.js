@@ -109,7 +109,7 @@ class CartManager {
         message += `\nPlease confirm availability and prep time. Thank you! 📖☕`;
 
         const encodedMessage = encodeURIComponent(message);
-        return `https://wa.me/${CAFE_INFO.whatsappNumber}?text=${encodedMessage}`;
+        return `https://api.whatsapp.com/send?phone=${CAFE_INFO.whatsappNumber}&text=${encodedMessage}`;
     }
 }
 
