@@ -205,22 +205,13 @@ h1, h2, h3, .font-serif-title {
 /* Toast Notifications */
 #toast-container {
     position: fixed;
-    bottom: 88px;
+    bottom: 24px;
     right: 24px;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     gap: 10px;
     pointer-events: none;
-}
-
-/* Floating WhatsApp Widget */
-#floating-whatsapp-widget {
-    transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-#floating-whatsapp-widget:hover {
-    filter: drop-shadow(0 10px 20px rgba(37, 211, 102, 0.35));
 }
 
 .toast {

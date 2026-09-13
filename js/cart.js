@@ -88,25 +88,26 @@ class CartManager {
         const { subtotal } = this.getSummary();
         if (this.items.length === 0) return null;
 
-        let message = `*✨ Order Inquiry - The Bookmark Cafe ✨*\n`;
+        let message = `✨ *Taste Tray Order - The Bookmark Cafe* ✨\n`;
         message += `📍 Kalyan West | Customer Pre-Order\n`;
         message += `───────────────────\n`;
-        message += `*Type:* ${orderType}\n\n`;
-        message += `*Selected Items:*\n`;
+        message += `🍽️ *Order Type:* ${orderType}\n\n`;
+        message += `📋 *Selected Dishes:*\n`;
 
         this.items.forEach(item => {
-            const vegIcon = item.isVeg ? '🟢' : '🔴';
-            message += `• ${vegIcon} ${item.name} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
+            const dietBadge = item.isVeg ? '🟢 [Veg]' : '🔴 [Non-Veg]';
+            message += `• ${dietBadge} *${item.name}* (x${item.quantity}) — ₹${item.price * item.quantity}\n`;
         });
 
         message += `\n───────────────────\n`;
-        message += `*Estimated Subtotal:* ₹${subtotal}\n`;
+        message += `💰 *Estimated Total:* ₹${subtotal}\n`;
 
         if (notes && notes.trim()) {
-            message += `*Special Instructions:* ${notes.trim()}\n`;
+            message += `📝 *Special Note:* ${notes.trim()}\n`;
         }
 
-        message += `\nPlease confirm availability and prep time. Thank you! 📖☕`;
+        message += `───────────────────\n`;
+        message += `Please confirm dish availability & estimated prep time. Thank you! 📖☕`;
 
         const encodedMessage = encodeURIComponent(message);
         return `https://api.whatsapp.com/send?phone=${CAFE_INFO.whatsappNumber}&text=${encodedMessage}`;

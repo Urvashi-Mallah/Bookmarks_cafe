@@ -49,23 +49,24 @@ class ReservationManager {
     }
 
     getWhatsAppBookingUrl(booking) {
-        let message = `*📚 Table Reservation Request - The Bookmark Cafe ☕*\n`;
+        let message = `✨ *Table Reservation Request - The Bookmark Cafe* ✨\n`;
+        message += `📍 Kalyan West | Cozy Nook Booking\n`;
         message += `───────────────────\n`;
-        message += `*Booking Ref:* ${booking.id}\n`;
-        message += `*Name:* ${booking.name}\n`;
-        message += `*Phone:* ${booking.phone}\n`;
-        message += `*Guests:* ${booking.guests} Person(s)\n`;
-        message += `*Date:* ${booking.date}\n`;
-        message += `*Time:* ${booking.time}\n`;
-        message += `*Seating:* ${booking.seating}\n`;
+        message += `🔖 *Booking Ref:* ${booking.id}\n`;
+        message += `👤 *Guest Name:* ${booking.name}\n`;
+        message += `📞 *Phone:* ${booking.phone}\n`;
+        message += `👥 *Guests:* ${booking.guests} Person(s)\n`;
+        message += `📅 *Date:* ${booking.date}\n`;
+        message += `⏰ *Time:* ${booking.time}\n`;
+        message += `🪑 *Seating:* ${booking.seating}\n`;
         if (booking.occasion && booking.occasion !== 'None') {
-            message += `*Occasion:* ${booking.occasion}\n`;
+            message += `🎉 *Occasion:* ${booking.occasion}\n`;
         }
-        if (booking.notes) {
-            message += `*Special Request:* ${booking.notes}\n`;
+        if (booking.notes && booking.notes.trim()) {
+            message += `📝 *Special Request:* ${booking.notes.trim()}\n`;
         }
         message += `───────────────────\n`;
-        message += `Please confirm my table reservation. Looking forward to visiting! 📖`;
+        message += `Please confirm table availability. Looking forward to visiting! 📖☕`;
 
         return `https://api.whatsapp.com/send?phone=${CAFE_INFO.whatsappNumber}&text=${encodeURIComponent(message)}`;
     }
