@@ -79,16 +79,6 @@ function renderMenuItems() {
 
     const isJainActive = (state.activeDietFilter === 'jain' || state.activeCategory === 'jain');
 
-    // Show or hide bottom custom request banner strictly when Jain category/filter is ON
-    const jainBanner = document.getElementById('jain-custom-banner');
-    if (jainBanner) {
-        if (isJainActive) {
-            jainBanner.classList.remove('hidden');
-        } else {
-            jainBanner.classList.add('hidden');
-        }
-    }
-
     let items = MENU_ITEMS;
 
     // Filter by category
